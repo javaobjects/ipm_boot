@@ -1,0 +1,32 @@
+{
+	"graph" : [
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/client/getClientGraphical.do",
+			"clientId" : 0,
+			"plotId" : 32,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/client/getClientGraphical.do",
+			"clientId" : 0,
+			"plotId" : 35,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/client/getClientGraphical.do",
+			"clientId" : 0,
+			"plotId" : 40,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/client/getClientGraphical.do",
+			"clientId" : 0,
+			"plotId" : 58,
+			"plotTypeId": 1
+		}
+	]
+}

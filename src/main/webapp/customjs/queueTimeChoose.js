@@ -1,0 +1,23 @@
+;$(function(){
+	/*通信对页面图表标题中快速选择时间*/
+	function refreshDataTime(UnixTime){
+		$("#starttime").val($.myTime.UnixToDate($.getDefaultEndtime()-UnixTime));
+		$("#endtime").val($.myTime.UnixToDate($.getDefaultEndtime()));
+		$("#form_submit").trigger("click");
+	}
+	$(".five").click(function(){
+		refreshDataTime(300);
+	});
+	$(".ten").click(function(){
+		refreshDataTime(600);
+	});
+	$(".oneHours").click(function(){
+		refreshDataTime(3600);
+	});
+	$(".oneDay").click(function(){
+		refreshDataTime(86400);
+	});
+	$(".oneWeek").click(function(){
+		refreshDataTime(604800);
+	});
+});

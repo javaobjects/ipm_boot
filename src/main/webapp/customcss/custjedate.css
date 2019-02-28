@@ -1,0 +1,29 @@
+.jedateblue .daysul,
+.jedateblue .timebox .artcont,
+.jedateblue .mainfoot,
+.jedateblue .ymsbox .artcont {
+    color:#000;
+}
+.jedateblue .ymsbox .arthead,
+.jedateblue .ymsbox .ymcon td.actdate,
+.jedateblue .ymsbox .ymcon td.actdate:hover,
+.jedateblue .daybox .arthead,
+.jedateblue .daysul td.actdate,
+.jedateblue .daysul td.actdate:hover,
+.jedateblue .daysul td.actdate .lunar,
+.jedateblue .timebox .arthead,
+.jedateblue .timebox .contime ul li.action,
+.jedateblue .timebox .contime ul li.action:hover,
+.jedateblue .timebox .contime ul li.disabled.action,
+.jedateblue .mainfoot .btnscon span{
+    background-color: #999;
+}
+.jedateblue .daysul td.other,.jedateblue .daysul td.other .nolunar,.jedateblue .daysul td.other .lunar{
+    color:#ccc;
+}
+.jedateblue .ymsbox .arthead em:hover,
+.jedateblue .daybox .arthead em:hover,
+.jedateblue .daybox .arthead .ymbtn:hover,
+.jedateblue .timebox .arthead em:hover{
+    background-color: #ccc;
+}

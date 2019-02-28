@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+	<title>模板设置</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="customcss/themify-icons.css">
+	<link rel="stylesheet" href="customcss/Linearicons.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="customcss/style.css">
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/generics.css">
+	<link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+	<link rel="stylesheet" href="customcss/custjedate.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+	<link rel="stylesheet" href="customcss/alarm/alarm.css">   
+	<link rel="stylesheet" href="customcss/jebox.css">
+	<link rel="stylesheet" href="customcss/form/form.css">  
+</head>
+<body>
+<header id="header">
+</header>
+<div class="clearfix"></div>
+<section id="main" class="p-relative" role="main">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed">
+        <!-- Side Menu -->
+        <ul class="list-unstyled side-menu top0">
+        </ul>
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+        <div class="block-area">
+            <div class="table-responsive tableMinH">
+                   <table id="fromSet"></table>
+            </div>
+		</div>
+		
+	<!-- 	添加内容 -->
+		<div class="block-area formContent" style="margin-bottom: 10px;">
+		        <div class="block-headerFrom" data-original-title>
+					<h3 class="block-titleFrom">新增</h3>
+			    </div>
+		       <div class="row formAdd" style="border: 1px solid rgba(204,204,204,.2);margin-left: 0px;margin-right: 0px;">
+		        <div class="col-md-12 m-ll-10">
+			        <div class="nameFrom text-left">
+			             <label class="navtime">模板名称</label>
+	                     <input class="datainp inptime formstep" id="nameFrom" type="text">
+				    </div>
+				</div>
+				<div class="col-md-12 m-ll-10">
+			         <div class="archivedFroms text-left">
+							<label class="navtime" for="archivedFrom">模板说明</label>
+							<textarea class="datainp inptime formsteps" id="archivedFrom" style="vertical-align: middle;"></textarea>	
+				     </div>
+		    	</div>
+			    <div class="col-md-12 m-ll-14">
+			         <div class="moduleFrom text-left">
+							<label class="navtime" for="moduleType">模块选择</label>
+							<select id="moduleType" class="inptime formstep">
+                                
+                            </select>
+				    </div>
+				    <div class="lists text-left">
+							<label class="navtime lablestep">列表</label>
+                            <input class="checkStyle" id="listForm" type="checkbox" name="listwarn">
+				    </div>
+				    <div class="alarms text-left">
+							<label class="navtime lablestep">告警</label>
+                            <input class="checkStyle" id="alarmForm" type="checkbox" name="listwarn">
+				    </div>
+			    </div>
+			    <div class="col-md-12">
+			         <div class="list-content" style="margin-left: -7px; margin-right: -7px;">
+			            <table class="table table-hover" style="margin-bottom: 0px;">
+			         	<thead>
+			         		<tr>
+			         			<th style="width: 70%;">KPI名称</th>
+			         			<th>图形</th>
+			         		</tr>
+			         	</thead>
+			         	<tbody id="table-list">
+			         	</tbody>
+			         </table>
+			         </div>
+			    </div>
+		   </div>
+		   <div class="col-md-12 text-center" style="margin-bottom: 10px;margin-top: 10px;">
+			     <button type="button" data-loading-text="稍后..." class="btn btn-sm" id="fromSure" style="margin-right: 10px;margin-left: -10px;">确定</button>
+			     <button type="button" class="btn btn-sm" id="fromcancel">取消</button>
+		   </div>
+		</div>
+		
+		<!-- 修改内容 -->
+		<div class="block-area formDeleteContent" style="margin-bottom: 10px;">
+		        <div class="block-headerFrom" data-original-title>
+					<h3 class="block-titleFrom">修改</h3>
+			    </div>
+		       <div class="row formChange" style="border: 1px solid rgba(204,204,204,.2);margin-left: 0px;margin-right: 0px;">
+		        <div class="col-md-12 m-ll-10">
+			        <div class="cnameFrom text-left" style="margin-top: 10px;">
+			             <label class="navtime">模板名称</label>
+	                     <input class="datainp inptime formstep" id="cnameFrom" type="text">
+				    </div>
+				</div>
+				<div class="col-md-12 m-ll-10">
+			         <div class="carchivedFroms text-left">
+							<label class="navtime" for="carchivedFrom">模板说明</label>
+							<textarea class="datainp inptime formsteps" id="carchivedFrom" style="vertical-align: middle;"></textarea>
+				     </div>
+		    	</div>
+			    <div class="col-md-12 m-ll-14">
+			         <div class="moduleFrom text-left">
+							<label class="navtime" for="cmoduleType">模块选择</label>
+				            <select id="cmoduleType" class="inptime formstep">
+				            </select>
+					</div>
+					<div class="clists text-left">
+							<label class="navtime lablestep">列表</label>
+                            <input class="checkStyle" id="clistForm" type="checkbox">
+				    </div>
+				    <div class="calarms text-left">
+							<label class="navtime lablestep">告警</label>
+                            <input class="checkStyle" id="calarmForm" type="checkbox">
+				    </div>
+			    </div>
+			    <div class="col-md-12">
+			         <div class="list-content-c" style="margin-left: -7px; margin-right: -7px;">
+			            <table class="table table-hover" style="margin-bottom: 0px;">
+			         	<thead>
+			         		<tr>
+			         			<th style="width: 70%;">KPI名称</th>
+			         			<th>图形</th>
+			         		</tr>
+			         	</thead>
+			         	<tbody id="table-listChange">
+			         	</tbody>
+			         </table>
+			         </div>
+			    </div>
+		   </div>
+		   <div class="col-md-12 text-center" style="margin-bottom: 10px;margin-top: 10px;">
+			     <button type="button" data-loading-text="稍后..." class="btn btn-sm" id="fromDeleteSure" style="margin-right: 10px;margin-left: -10px;">确定</button>
+			     <button type="button" class="btn btn-sm" id="fromDeletecancel">取消</button>
+		   </div>
+		</div>
+    </section>
+    <!-- Older IE Message -->
+    <!--[if lt IE 9]>
+    <div class="ie-block">
+        <h1 class="Ops">抱歉！</h1>
+        <p>您正在使用一个过时的Internet Explorer版本，升级到以下任何Web浏览器，以便访问该网站的最大功能。 </p>
+        <ul class="browsers">
+            <li>
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Google Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.firefox.com.cn/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Mozilla Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.oupeng.com/download">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/cn/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>Internet Explorer(New)</div>
+                </a>
+            </li>
+        </ul>
+        <p>升级你的浏览器更安全和更快的网络体验。 <br/>感谢你的支持...</p>
+    </div>
+    <![endif]-->
+</section>
+<div class="modal fade in" id="formDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    删除
+                </h4>
+            </div>
+            <div class="modal-body">
+                                 删除模版的同时将删除所有与之关联的报表计划。
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary footer-btn" data-dismiss="modal" id="btn-fromDelete">
+                  确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="js/jQuery/jquery.min.js"></script> <!-- jQuery Library -->
+<!-- Bootstrap -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/header.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+<script src="js/fileupload.min.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="customjs/timeTogoback.js"></script>
+<script src="customjs/sidebar.js"></script>
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="js/bootstrap/tableExport.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="customjs/search.js"></script>
+<script src="customjs/from/fromSetAdd.js"></script>
+<script src="customjs/from/fromSetChange.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+</body>
+</html>

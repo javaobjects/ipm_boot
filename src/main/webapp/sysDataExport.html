@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+	<title>数据导出</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="customcss/themify-icons.css">
+	<link rel="stylesheet" href="customcss/Linearicons.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="customcss/style.css">
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/generics.css">
+	<link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+	<link rel="stylesheet" href="customcss/custjedate.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+	<link rel="stylesheet" href="customcss/alarm/alarm.css">
+	<link rel="stylesheet" href="customcss/jebox.css">
+	<style>
+		.block-data {
+			margin-bottom: 10px;
+		}
+
+		.block-data .block-headerData {
+			display: inline-block;
+		}
+
+		.block-data .block-titleData {
+			font-size: 13px;
+			text-transform: uppercase;
+			padding: 4px 23px 4px 2px;
+			display: inline-block;
+			letter-spacing: 2px;
+		}
+
+		.block-data .dataSolid {
+			border: 1px solid rgba(204, 204, 204, .2);
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+
+		.block-data .m-ll-10 {
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
+
+		.block-data .timeData,
+		.block-data .ctimeData {
+			margin-top: 8px;
+			margin-left: 29px;
+		}
+
+		.block-data .datastep {
+			margin-left: 10px;
+			width: 24%;
+		}
+
+		.block-data .dataStyle {
+			display: inline;
+		}
+
+		.block-data .topicData,
+		.block-data .ctopicData {
+			margin-left: 54px;
+		}
+
+		.block-data .archivedData,
+		.block-data .carchivedData {
+			margin-left: 29px;
+		}
+
+		.block-data .userIp,
+		.block-data .cuserIp {
+			margin-left: 32px;
+		}
+
+		.block-data .serverIp,
+		.block-data .cserverIp {
+			margin-left: 2px;
+		}
+
+		.block-data .portData,
+		.block-data .cportData {
+			margin-left: 53px;
+		}
+
+		.block-data .oprationData,
+		.block-data .coprationData {
+			margin-left: 30px;
+		}
+
+		.block-data .watchpointData,
+		.block-data .cwatchpointData {
+			margin-left: 42px;
+		}
+
+		.block-data .sureData,
+		.block-data .csureData {
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+
+		.block-data .ipData,
+		.block-data .cipData {
+			margin-left: 38px;
+		}
+	</style>
+</head>
+
+<body>
+	<header id="header">
+	</header>
+	<div class="clearfix"></div>
+	<section id="main" class="p-relative" role="main">
+		<!-- Sidebar -->
+		<aside id="sidebar" class="fixed">
+			<!-- Side Menu -->
+			<ul class="list-unstyled side-menu top0">
+			</ul>
+		</aside>
+		<!-- Content -->
+		<section id="content" class="container">
+			<!--  数据导出列表 -->
+			<div class="block-area">
+				<div class="table-respons ive tableMinH">
+					<table id="DataSet"></table>
+				</div>
+			</div>
+
+			<!-- 	添加内容 -->
+			<div class="block-area dataContent block-data">
+				<div class="block-headerData" data-original-title>
+					<h3 class="block-titleData">新增</h3>
+				</div>
+				<div class="row dataSolid">
+					<div class="col-md-12 m-ll-10">
+						<div class="text-left dataStyle">
+							<label class="navtime">推送类型</label>
+							<select id="archivedType" class="inptime datastep">
+								<option value="0" selected>kpi</option>
+								<option value="1">通信对</option>
+							</select>
+						</div>
+						<div class="archivedData text-left dataStyle">
+							<label class="navtime">推送方式</label>
+							<select id="dataArchived" class="inptime datastep">
+								<option value="0" selected>kafka</option>
+							</select>
+						</div>
+						<div class="timeData text-left dataStyle">
+							<label class="navtime">时间粒度</label>
+							<select id="dataTime" class="inptime datastep">
+								<option value="0">10秒</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-12 m-ll-10">
+						<div class="ipData text-left dataStyle">
+							<label class="navtime lablestep">IP</label>
+							<input id="dataIp" class="datainp inptime datastep" type="text">
+						</div>
+						<div class="portData text-left dataStyle">
+							<label class="navtime lablestep">端口</label>
+							<input id="dataPort" class="datainp inptime datastep" type="text">
+						</div>
+						<div class="topicData text-left dataStyle">
+							<label class="navtime lablestep">主题</label>
+							<input id="dataTopic" class="datainp inptime datastep" type="text">
+						</div>
+
+					</div>
+					<div class="col-md-12 m-ll-10">
+						<div class="text-left dataStyle">
+							<label class="navtime" for="moduleType">模块类型</label>
+							<select id="dataModuleType" class="inptime datastep">
+							</select>
+						</div>
+						<div class="watchpointData text-left dataStyle">
+							<label class="navtime lablestep" for="watchpointFrom">观察点</label>
+							<select id="dataWatchpoint" class="inptime datastep">
+							</select>
+						</div>
+						<div class="oprationData text-left dataStyle ">
+							<label class="navtime lablestep" for="oprationFrom">业务名称</label>
+							<select id="dataOpration" class="inptime datastep">
+							</select>
+						</div>
+					</div>
+					<div class="dataIpAll col-md-12 m-ll-10">
+						<div class="serverIp text-left dataStyle">
+							<label class="navtime" for="moduleType">服务端IP</label>
+							<input id="ipServer" class="inptime datastep" type="text">
+						</div>
+						<div class="userIp text-left dataStyle">
+							<label class="navtime lablestep" for="watchpointFrom">客户端IP</label>
+							<input id="ipUser" class="inptime datastep" type="text">
+						</div>
+					</div>
+					<div class="col-md-12 list">
+						<div class="list-content" style="margin-left: -7px; margin-right: -7px;">
+							<table class="table table-hover" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th style="width: 70%;">Kpi名称</th>
+										<th>数据</th>
+									</tr>
+								</thead>
+								<tbody id="table-list">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-12 column">
+						<div class="column-content" style="margin-left: -7px; margin-right: -7px;">
+							<table class="table table-hover" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th style="width: 70%;">列名称</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody id="tableColumn">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 text-right sureData">
+					<button type="button" data-loading-text="稍后..." class="btn btn-sm" id="dataSure" style="margin-right: 10px;">确定</button>
+					<button type="button" class="btn btn-sm" id="datacancel">取消</button>
+				</div>
+			</div>
+
+			<!-- 修改内容 -->
+			<div class="block-area dataDeleteContent block-data" style="margin-bottom: 10px;">
+				<div class="block-headerFrom" data-original-title>
+					<h3 class="block-titleData">修改</h3>
+				</div>
+				<div class="row dataSolid">
+					<div class="col-md-12 m-ll-10">
+						<div class="text-left dataStyle">
+							<label class="navtime">推送类型</label>
+							<select id="carchivedType" class="inptime datastep">
+								<option value="0" selected>kpi</option>
+								<option value="1">通信对</option>
+							</select>
+						</div>
+						<div class="carchivedData text-left dataStyle">
+							<label class="navtime">推送方式</label>
+							<select id="cdataArchived" class="inptime datastep">
+								<option value="0" selected>kafka</option>
+							</select>
+						</div>
+						<div class="ctimeData text-left dataStyle">
+							<label class="navtime">时间粒度</label>
+							<select id="cdataTime" class="inptime datastep">
+								<option value="0">10秒</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-12 m-ll-10">
+						<div class="cipData text-left dataStyle">
+							<label class="navtime lablestep">IP</label>
+							<input id="cdataIp" class="datainp inptime datastep" type="text">
+						</div>
+						<div class="cportData text-left dataStyle">
+							<label class="navtime lablestep">端口</label>
+							<input id="cdataPort" class="datainp inptime datastep" type="text">
+						</div>
+						<div class="ctopicData text-left dataStyle">
+							<label class="navtime lablestep">主题</label>
+							<input id="cdataTopic" class="datainp inptime datastep" type="text">
+						</div>
+					</div>
+					<div class="col-md-12 m-ll-10">
+						<div class="text-left dataStyle">
+							<label class="navtime" for="cmoduleType">模块类型</label>
+							<select id="cdataModuleType" class="inptime datastep">
+							</select>
+						</div>
+						<div class="cwatchpointData text-left dataStyle">
+							<label class="navtime lablestep" for="cwatchpointFrom">观察点</label>
+							<select id="cdataWatchpoint" class="inptime datastep">
+							</select>
+						</div>
+						<div class="coprationData text-left dataStyle">
+							<label class="navtime lablestep" for="coprationFrom">业务名称</label>
+							<select id="cdataOpration" class="inptime datastep">
+							</select>
+						</div>
+					</div>
+					<div class="cdataIpAll col-md-12 m-ll-10">
+						<div class="cserverIp text-left dataStyle">
+							<label class="navtime" for="moduleType">服务端IP</label>
+							<input id="cipServer" class="inptime datastep" type="text">
+						</div>
+						<div class="cuserIp text-left dataStyle">
+							<label class="navtime lablestep" for="watchpointFrom">客户端IP</label>
+							<input id="cipUser" class="inptime datastep" type="text">
+						</div>
+					</div>
+					<div class="col-md-12 clist">
+						<div class="list-content-c" style="margin-left: -7px; margin-right: -7px;">
+							<table class="table table-hover" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th style="width: 70%;">Kpi名称</th>
+										<th>数据</th>
+									</tr>
+								</thead>
+								<tbody id="table-listChange">
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-12 ccolumn">
+						<div class="ccolumn-content" style="margin-left: -7px; margin-right: -7px;">
+							<table class="table table-hover" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th style="width: 70%;">列名称</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody id="ctableColumn">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 text-right csureData">
+					<button type="button" data-loading-text="稍后..." class="btn btn-sm" id="dataDeleteSure" style="margin-right: 10px;">确定</button>
+					<button type="button" class="btn btn-sm" id="dataDeletecancel">取消</button>
+				</div>
+			</div>
+		</section>
+		<!-- Older IE Message -->
+		<!--[if lt IE 9]>
+    <div class="ie-block">
+        <h1 class="Ops">抱歉！</h1>
+        <p>您正在使用一个过时的Internet Explorer版本，升级到以下任何Web浏览器，以便访问该网站的最大功能。 </p>
+        <ul class="browsers">
+            <li>
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Google Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.firefox.com.cn/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Mozilla Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.oupeng.com/download">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/cn/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>Internet Explorer(New)</div>
+                </a>
+            </li>
+        </ul>
+        <p>升级你的浏览器更安全和更快的网络体验。 <br/>感谢你的支持...</p>
+    </div>
+    <![endif]-->
+	</section>
+	<div class="modal fade in" id="dataDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	 data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title">
+						删除
+					</h4>
+				</div>
+				<div class="modal-body">
+					确定删除此行吗？
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary footer-btn" data-dismiss="modal" id="btn-dataDelete">
+						确定
+					</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery -->
+	<script src="js/jQuery/jquery.min.js"></script>
+	<!-- jQuery Library -->
+	<!-- Bootstrap -->
+	<script src="js/bootstrap/bootstrap.min.js"></script>
+	<script src="customjs/header.js"></script>
+	<script src="js/functions.js"></script>
+	<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+	<script src="js/fileupload.min.js"></script>
+	<script src="customjs/changeBackground.js"></script>
+	<script src="customjs/timeTogoback.js"></script>
+	<script src="customjs/sidebar.js"></script>
+	<script src="js/bootstrap/bootstrap-table.js"></script>
+	<script src="js/bootstrap/bootstrap-table-export.js"></script>
+	<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+	<script src="customjs/table/bootstrap.table.util.js"></script>
+	<script src="js/bootstrap/tableExport.js"></script>
+	<script src="js/jQuery/tdrage/Tdrag.js"></script>
+	<script src="js/jQuery/timeStamp.js"></script>
+	<script src="customjs/alarm/alarm.js"></script>
+	<script src="customjs/search.js"></script>
+	<script src="customjs/setting/sysDataExportAdd.js"></script>
+	<script src="customjs/setting/sysDataExportChange.js"></script>
+	<script src="js/jquery.jebox.min.js"></script>
+	<script src="customjs/colose.js"></script>
+</body>
+
+</html>

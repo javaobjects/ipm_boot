@@ -1,0 +1,322 @@
+/*
+* 2017/03/08 by yanbo
+*/
+.uImage {
+    width: 30px;
+    height: 30px;
+}
+body,html {
+    /*background-color: #fcf8e3;*/
+    /*background-color: #097DA5;*/
+    /*background:rgb(255,255,255);*/
+    /*background:url(../images/bg1.jpg) top center no-repeat;*/
+    overflow-x: hidden;
+    background-size:cover;
+    /*overflow-y:hidden;*/
+}
+body{
+    overflow: hidden;
+}
+.container-fluid {
+    padding-left: 0px;
+}
+.blank-space {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    border-right: 2px solid #334751;
+}
+label {
+    color: #fff;
+}
+.jtopo_toolbar{
+    float: right;
+    margin-top: 13px;
+}
+.clbutton {
+    border-radius: 0 2px 2px 0;
+    background-color: #f2f2f2;
+    color: #000;
+    border:0;
+    height:22px;
+}
+#findText{
+    width: 100px;
+    height:22px;
+}
+#findText, .select {
+    border-radius: 2px 2px 2px 2px;
+    border: 0;
+    color:#000;
+}
+#jtopo_textfield{
+    display: none;position: absolute;
+}
+#findButton:hover {
+    background-color: #c4daf4;
+}
+.select {
+    border-radius: 2px 2px 2px 2px;
+    height: 22px;
+    color:#000000;
+}
+.cursor{
+    cursor:pointer;
+}
+.block-area-jnode{
+    padding: 0 0 0 0;
+}
+.modal-content {
+    color: white;
+    /*background: rgba(51, 122, 183, 0.5);*/
+    background: rgba(51, 122, 183, 0.8);
+}
+#myModal .modal-body{
+    max-height: 500px;
+    /*overflow-y: scroll; */
+    overflow-x: hidden;
+}
+/*::-webkit-scrollbar-thumb{*/
+    /*background-color:#018EE8;*/
+    /*height:50px;*/
+    /*outline-offset:-2px;*/
+    /*outline:2px solid #fff;*/
+    /*-webkit-border-radius:4px;*/
+    /*border: 2px solid #fff;*/
+/*}*/
+/*::-webkit-scrollbar-thumb:hover{*/
+    /*background-color:#FB4446;*/
+    /*height:50px;*/
+    /*-webkit-border-radius:4px;*/
+/*}*/
+/*::-webkit-scrollbar{*/
+    /*width:8px;*/
+    /*height:8px;*/
+/*}*/
+/*::-webkit-scrollbar-track-piece{*/
+    /*background-color:#fff;*/
+    /*-webkit-border-radius:0;*/
+/*}*/
+.left{float:left}
+.white{color:white;}
+a:hover{text-decoration: none;}
+#contextmenu{
+    border-radius: 5px;
+    display:none;
+    position: absolute;
+    list-style: none;
+    background: #337ab7;
+    background: #6e839b;
+    opacity:0.9;
+    cursor: pointer;
+    margin:0;padding:0;
+    font-family:Helvetica Neue,Helvetica, Arial,sans-serif;
+    font-size:12px;
+    /*     font-weight: bold; */
+}
+#contextmenu>li:hover .white{color:#334751;}
+#contextmenu>li{width:120px;margin:5px;}
+.tubiao>li:hover {background:#334751;}
+.fontPtcolor{color:#fff;margin-right: 7px;}
+.navbar-logo{
+    margin-bottom: 0px;
+    background-color: #1C2D36;
+    /*border: 0px;*/
+    border: 1px solid #5a5656;
+}
+#linkmenu{
+    border-radius: 5px;
+    display:none;
+    position: absolute;
+    list-style: none;
+    /*  background: #337ab7; */
+    background: #6e839b;
+    opacity:0.9;
+    cursor: pointer;
+    margin:0;
+    padding:0;
+    font-family:Helvetica Neue,Helvetica, Arial,sans-serif;
+    font-size:12px;
+}
+#linkmenu>li:hover a{color:#334751;}
+#linkmenu>li{width:120px;margin: 5px;}
+@media (min-width: 768px){
+    .navbar-logo {
+        border-radius: 0px !important;
+    }
+}
+.mloadingDiv{
+    position:absolute;
+    left:0;
+    width:100%;
+    top:0;
+    background:#f3f8ff;
+    opacity:0.8;
+    filter:alpha(opacity=90);
+    z-index:10000;
+}
+.loadingDivChild{
+    position: absolute;
+    cursor: wait;
+    width: auto;
+    height:57px;
+    line-height:57px;
+    padding-left: 50px;
+    padding-right: 5px;
+    background: #fff url(../../images/gif.gif) no-repeat scroll 18px 20px;
+    border: 2px solid #95B8E7;
+    color: #696969;
+    font-family:\'Microsoft YaHei\';
+}
+.suspension{
+    position:absolute;
+    z-index: 2;
+    background:#7e93ae;
+    opacity:0.9;
+    color:white;
+    box-shadow:2px 2px 2px #8d9eb7,2px 2px 2px #ffffff;
+    border-radius: 3px;
+    text-align: center;
+    display: none;
+}
+.suspension p{
+    margin: 5px;
+}
+.function {
+    margin-left: 60%;
+}
+.function ul {
+    list-style:none;
+}
+.function ul li {
+    float:left;
+    margin-right: 7px;
+}
+div.panel[name=topo_toolbar] {
+    right: 25px;
+    top:10px;
+}
+div.panel {
+    color: white;
+    background: rgba(51, 122, 183, 0);
+    position: absolute;
+    /*display:inline-block;*/
+}
+.btn-group{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.mybtn-group{height:30px;}
+div.panel[name=topo_toolbar] span {
+    display: inline;
+}
+.mypanel-body{
+    padding: 0px;
+}
+div.panel[name=topo_toolbar] .input-group {
+    display: inline-block;
+}
+div.panel[name=topo_toolbar] ul[name=search_mode] {
+    border: solid 0px #568492;
+    min-width: 0px;
+    width: 100px;
+    color: #fff;
+    margin: 0px 0 0;
+    padding: 0px 0;
+    font-size: 14px;
+    background-color: #7e93ae;
+    text-align: center;
+}
+div.panel[name=topo_toolbar] ul[name=search_mode]> li > a{
+    padding: 0px 0px;
+}
+.btn-sus{
+    color: #fff;
+    background-color: #7e93ae;
+    border-color: #568492;
+}
+.close{
+    /*position: absolute;*/
+    /*left: 89%;
+    top: 18%;*/
+    font-size: 12px;
+    color: green;
+}
+.removeli{
+    position:relative;
+    left:-86px;
+    color: #fff;
+}
+.move{cursor:move;}
+.msdiv p {
+    margin:0;padding:0;
+}
+.media {
+    margin-top: 8px;
+}
+.exemple{
+    width:125px;
+    height: 155px;
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    border:1px solid grey;
+    border-radius: 5px;
+    background:rgba(51, 71, 81, 0.5);
+    color:white;
+    text-align: center;
+    font-size: 12px;
+}
+.exemple>ul{
+    /*padding: 12% 11% 0% 8%;*/
+    padding: 12% 0% 0% 0%;
+}
+.exemple>ul>li:nth-of-type(1){
+    height: 20px;
+}
+.exemple>ul>li:nth-of-type(1)>a{
+    margin-top:4px;
+}
+.exemple>ul>li:nth-of-type(2){
+    height: 20px;
+}
+.exemple>ul>li:nth-of-type(2)>a{
+    margin-top:4px;
+}
+.exemple>.media-list>h1{
+    text-decoration: underline;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+.exemple .media-list .media .pull-left .media-object{
+    /*margin-left: 337%;*/
+    position: relative;
+    left: 21px;
+}
+.exemple>.media-list>.media:last-child{
+    margin-top:10%;
+}
+.exemple>.media-list>.media:last-child>a>.media-object{
+    margin-left: 25%;
+}
+.exemple>.media-list>.media:last-child>.media-body{
+    margin-top: 9%;width: 80%;margin-left: 10%;
+}
+#searchButton{
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 100%);
+}
+button#searchButton:hover{
+    color: #000;
+    background: #fff;
+}
+#canvas{
+    border:1px solid rgba(255,255,255,0.15)
+}
+button[data-toggle="dropdown"]:hover{
+    color: #ffffff;
+}
+
+#search select option{
+	color: #000;
+}

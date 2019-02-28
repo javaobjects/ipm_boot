@@ -1,0 +1,214 @@
+/*将table的分页按钮变小*/
+span.btn-group>button[data-toggle="dropdown"]{
+    padding:0px;
+}
+/*将table的分页按钮变小*/
+/*表格隐藏消失列的文字颜色*/
+.dropdown-menu>li[role="menuitem"]>label{
+    color:#000000 ;
+}
+.dropdown-menu>li[role="menuitem"]>label>input[type="checkbox"]{
+    opacity: 1;
+}
+/*表格隐藏消失列的文字颜色*/
+/*table hover 时改变字体颜色*/
+.table-hover>tbody>tr:hover{
+    color:#fff;
+}
+.table-hover>tbody>tr:hover a{
+    color:#fff;
+}
+/*table hover 时改变字体颜色*/
+/*将表头字体变细*/
+.th-inner{
+    /*font-weight:100;*/
+}
+/*将表头字体变细*/
+/*将日期插件的字体颜色调为黑色*/
+.datetimepicker{
+    color:#000000;
+}
+.pagination>li>a,
+.btn-default,
+.nav-tabs>li.active>a,
+.btnSelf,
+.input-group-addon{
+    background: rgba(0,0,0,0.05);
+    color:#fcfcfc;
+}
+.btn-default:hover{
+    background: rgba(0,0,0,0.3);
+    color:#fcfcfc;
+}
+.btn-default:focus{
+    background: rgba(0,0,0,0.3);
+    color:#fcfcfc;
+}
+.btn:focus {
+    color:#fcfcfc;
+}
+.fixed-table-container{
+    /*border: 1px solid #AAAAAA;*/
+    /*border: none;*/
+    border-top:1px solid rgba(204, 204, 204, 0.2);
+    border-bottom:1px solid rgba(204, 204, 204, 0.2);
+    border-left:1px solid rgba(204, 204, 204, 0.3);
+    border-right:1px solid rgba(204, 204, 204, 0.3);
+}
+.fixed-table-container{
+    /*background: rgba(0,0,0,0.35);*/
+}
+.modal-body .table td, .table th{
+	border-color: rgba(0,0,0,0.05)!important;
+}
+.table td, .table th {
+    border-color: rgba(255,255,255,0.05)!important;
+}
+.bootstrap-table .table{
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.table-hover>tbody>tr:hover>td,
+.table-hover>tbody>tr:hover>th {
+    background-color:rgba(0,0,0,.25);
+}
+.table>thead>tr>td.active,
+.table>tbody>tr>td.active,
+.table>tfoot>tr>td.active,
+.table>thead>tr>th.active,
+.table>tbody>tr>th.active,
+.table>tfoot>tr>th.active,
+.table>thead>tr.active>td,
+.table>tbody>tr.active>td,
+.table>tfoot>tr.active>td,
+.table>thead>tr.active>th,
+.table>tbody>tr.active>th,
+.table>tfoot>tr.active>th {
+    background-color:rgba(0,0,0,.25);
+}
+.table>tbody>tr>td{
+    /*font-size: 13px;*/
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.pagination>li>a:hover,
+.pagination>.active>a,
+.pagination>.active>a:hover{
+    background-color: 	#C0C0C0;
+    border-color: 	#C0C0C0;
+}
+.form-control {
+    border-radius: 0;
+    box-shadow: none;
+    font-weight: 400;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.modal-body .form-control{
+	border-radius: 0;
+    box-shadow: none;
+    font-weight: 400;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.form-control[disabled] {
+    background: rgba(0,0,0,.05);
+}
+.editable-input>input[type="text"]{
+    color:#000;
+}
+.fixed-table-toolbar .bs-bars,
+.fixed-table-toolbar .search,
+.fixed-table-toolbar .columns{
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+.th-inner>input[type="checkbox"],
+.bs-checkbox>input[type="checkbox"]{
+    opacity: 1;
+}
+.fixed-table-container thead th .th-inner{
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+.modal-body .table>tbody>tr>td{
+	color:#000;
+}
+.table>tbody>tr>td {
+    line-height: 14px;
+    color:#faf9f9;
+}
+.fixed-table-pagination .pagination a {
+    line-height: 13px;
+}
+.btn-group>.btn-group {
+    float: none;
+}
+.footer-btn {
+    margin-right: 40px;
+}
+.modal-footer {
+    margin-top: 0;
+}
+/*custom code*/
+.pagination-detail{
+    color: #ccc;
+}
+.pagination-detail>.page-list>.btn-group>button>span{
+    color:#ccc;
+}
+/*组合告警模态框表格样式*/
+#zuheKpitableRow-modal .clearfix{
+    border:none;
+}
+#zuheKpitableRow-modal span.pagination-info{
+    color:#000;
+}
+#zuheKpitableRow-modal span.page-size{
+    color:#000;
+}
+#zuheKpitableRow-modal span.caret{
+    color:#000;
+}
+#zuheKpitableRow-modal ul.pagination>li>a{
+    color:#000;
+}
+.fixed-table-container #alarmZhtab tbody .selected td{
+    background: #bfbfbf;
+}
+/*组合告警的禁选行样式*/
+.groupKpiCanUsed{
+    cursor: not-allowed;
+}
+/*
+ * 连线差值列表
+ */
+table.reduceTable{
+    background: rgba(0,0,0,.35)
+}
+table.reduceTable>thead>tr>th{
+    text-align: center;
+    line-height: 14px;
+    letter-spacing: 4px;
+}
+.reduceTable>tbody>tr>td{
+    line-height: 14px;
+    padding:4px 1px;
+    letter-spacing: 2px;
+}
+.reduceTable>tbody>tr>td:first-child{
+    font-size: 12px;
+    transform: scale(0.84);
+    border-right: 1px solid #ddd;
+}
+.reduceTable>tbody>tr>td:nth-child(2){
+    border-right: 1px solid #ddd;
+    padding:4px 3px;
+}
+.reduceTable>tbody>tr>td:nth-child(3){
+    font-size: 12px;
+    transform: scale(0.84);
+}

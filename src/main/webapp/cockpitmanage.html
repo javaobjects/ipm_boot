@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>管理与设置</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="customcss/themify-icons.css">
+    <link rel="stylesheet" href="customcss/Linearicons.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="customcss/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/generics.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+    <link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+    <link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+    <link rel="stylesheet" href="customcss/custjedate.css">
+    <link rel="stylesheet" href="customcss/alarm/alarm.css">
+    <link rel="stylesheet" href="customcss/jebox.css"> 
+</head>
+<body>
+<header id="header">
+</header>
+<div class="clearfix"></div>
+<section id="main" class="p-relative" role="main" style="width:100%">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed">
+        <!-- Side Menu -->
+        <ul class="list-unstyled side-menu top0">
+        </ul>
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+        <!--<h2>系统默认驾驶仓</h2>-->
+        <div class="block-area">
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="cenTer"></table>
+                </div>
+            </div>
+            <!--此表格无任何意义仅为占一点间距-->
+            <div class="table-responsive none">
+                <div class="togglebox centerkpiSetTab">
+                    <table id="centerkpiSetTab"></table>
+                </div>
+            </div>
+            <!--观察点-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                   <table id="oberSet"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox obserkpiSetTab">
+                    <table id="obserkpiSetTab"></table>
+                </div>
+            </div>
+            <!--服务端-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                   <table id="serSet"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox serkpiSetTab">
+                   <table id="serkpiSetTab"></table>
+                </div>
+            </div>
+            <!--客户端-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                   <table id="userSet"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox userkpiSetTab">
+                    <table id="userkpiSetTab"></table>
+                </div>
+            </div>
+            <!--web服务4-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="webSer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox webSerSetTab">
+                    <table id="webSerSetTab"></table>
+                </div>
+            </div>
+            <!--oracle服务5-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="oraSer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox oraSerSetTab">
+                    <table id="oraSerSetTab"></table>
+                </div>
+            </div>
+            <!--mySql服务6-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="mySqlSer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox mySqlSerSetTab">
+                    <table id="mySqlSerSetTab"></table>
+                </div>
+            </div>
+            <!--sqlServer服务7-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="sqlSer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox sqlSerSetTab">
+                    <table id="sqlSerSetTab"></table>
+                </div>
+            </div>
+            <!--URL服务管理与设置-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="urlSer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox urlSerSetTab">
+                    <table id="urlSerSetTab"></table>
+                </div>
+            </div>
+            <!-- 报文交易管理与设置 -->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                    <table id="baowenJySer"></table>
+                </div>
+            </div>
+            <div class="table-responsive none">
+                <div class="togglebox baowenJySerSetTab">
+                    <table id="baowenJySerSetTab"></table>
+                </div>
+            </div>
+            <!--应用可用性设置与管理-->
+            <div class="table-responsive overflow tableMinH none">
+                <div class="togglebox">
+                   <table id="usability"></table>
+                </div>
+            </div>
+            <!--此表格无任何意义仅为占一点间距-->
+            <div class="table-responsive none">
+                <div class="togglebox usabilitySerSetTab">
+                    <table id="usabilitySerSetTab"></table>
+                </div>
+            </div>
+            <!--驾驶仓管理与设置-->
+            <div class="table-responsive overflow tableMinH">
+                <div class="togglebox">
+                   <table id="cockMange"></table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Older IE Message -->
+    <!--[if lt IE 9]>
+    <div class="ie-block">
+        <h1 class="Ops">抱歉！</h1>
+        <p>您正在使用一个过时的Internet Explorer版本，升级到以下任何Web浏览器，以便访问该网站的最大功能。 </p>
+        <ul class="browsers">
+            <li>
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Google Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.firefox.com.cn/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Mozilla Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.oupeng.com/download">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/cn/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>Internet Explorer(New)</div>
+                </a>
+            </li>
+        </ul>
+        <p>升级你的浏览器更安全和更快的网络体验。 <br/>感谢你的支持...</p>
+    </div>
+    <![endif]-->
+</section>
+<div class="modal fade in" id="addtableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    新增
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary footer-btn" id="btn-addtableRow">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="changetableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    修改
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary footer-btn" id="btn-changetableRow">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="Confirm-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    删除
+                </h4>
+            </div>
+            <div class="modal-body">
+                确定删除此行吗？
+            </div>
+            <div class="modal-footer">
+             <!--   <button type="button" class="btn btn-primary footer-btn" data-dismiss="modal" id="btn-ConfirmdelRow">
+                    确定
+                </button>-->
+                <button type="button" class="btn btn-primary footer-btn" id="btn-ConfirmdelRow" data-loading-text="请稍候...">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="ediKpitableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    修改
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary footer-btn" id="btn-ediKpitableRow">
+                   确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="zuheKpitableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    组合告警
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="groupKpiName" style="margin-left: 30px;">组合告警名称</label>
+                        <input type="text" id="groupKpiName" value="" style="color:#000;">
+                    </div>
+                </div> 
+                <div class="form-horizontal">
+                    <table id="alarmZhtab"></table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary footer-btn" id="btn-zuheKpitableRow">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="js/jQuery/jquery.min.js"></script> <!-- jQuery Library -->
+<!-- Bootstrap -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/header.js"></script>
+<!-- Bootstrap-table -->
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/tableExport.js"></script>
+<script src="js/select.min.js"></script>
+<script src="js/chosen.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+<script src="customjs/bsTable/handlebsTable.js"></script>
+<script src="customjs/timeTogoback.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="customjs/sidebar.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="customjs/cockpitmanage.js"></script>
+<script src="customjs/search.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+</body>
+</html>

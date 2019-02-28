@@ -1,0 +1,74 @@
+/* 首页告警悬浮 */
+#alarmWin {
+    width: 322px;
+    height: 35px;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    z-index: 50;
+}
+#alarmWin .modal-content {
+	background :none;
+	color: #fff;
+}
+#alarmWin .modal-body{
+    border-radius: 3px;
+    background: rgba(0,0,0,0.88);
+    color: #fff;
+}
+#alarmWin .modal-header{
+    font-size: 13px;
+    padding: 7px 6px 6px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+}
+#alarmWinFooter{
+	background: rgba(0,0,0,0.88);
+}
+#alarmWin .modal-title{
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+#alarmWin i {
+    position: absolute; right: 10px; cursor: pointer;line-height: 30px;
+}
+#alarmWin .fixed-table-container{
+    background: none;
+}
+#alarmWin .th-inner{
+    font-weight: 200;
+}
+#alarmWin .table>tbody>tr>td{
+	font-size: 12px;
+	padding: 8px;
+	color: #fff;
+    line-height: 14px;
+}
+#alarmWin .table td, .table th {
+    border-color: rgba(255,255,255,0.05)!important;
+}
+#alarmTable thead {
+    background: rgba(255,255,255,.2);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+button.btn-alarmStyle{
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(0,0,0,0.05) !important;
+    color: #fcfcfc !important;
+    line-height: 1.5 !important;
+    border-radius: 3px !important;
+}
+button.btn-alarmStyle:hover {
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    text-shadow: none !important;
+}
+button.btn-alarmStyle:last-child{
+    right:0;
+}
+#alarmTable .sortable{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.table>tbody>tr>td{
+	vertical-align: inherit;
+}

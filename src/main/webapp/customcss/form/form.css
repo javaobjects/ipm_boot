@@ -1,0 +1,245 @@
+/* 报表部分css */
+
+/* 模板和计划公用部分 */
+.m-ll-10 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.formstep {
+    margin-left: 10px;
+    width: 19%;
+}
+
+/* 模板部分 */
+.m-ll-14 {
+    margin-top: 14px;
+    margin-bottom: 12px;
+}
+
+.nameFrom {
+    margin-top: 8px;
+}
+
+.formsteps {
+    margin-left: 10px;
+    width: 41.6%;
+    height: 70px;
+}
+
+.moduleFrom,
+.lists,
+.alarms,
+.archivedFroms,
+.calarms,
+.clists {
+    display: inline;
+}
+
+.alarms,
+.calarms {
+    margin-left: 50px;
+}
+
+.lists,
+.clists {
+    margin-left: 60px;
+}
+
+.block-headerFrom {
+    display: inline-block;
+}
+
+.block-titleFrom {
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 4px 23px 4px 2px;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+.checkStyle {
+    vertical-align: text-bottom;
+    width: 30px;
+}
+
+/* 计划部分 */
+.m-ll-12 {
+    /* margin-top: 8px; */
+    margin-bottom: 15px;
+}
+
+.namePlan,
+.cnamePlan {
+    margin-top: 8px;
+    margin-left: 6px;
+}
+
+.formname,
+.cformname {
+    margin-left: 10px;
+    width: 19.1%;
+}
+
+.modulePlan,
+.formWatchpoint,
+.ppiForm,
+.cmodulePlan,
+.cformWatchpoint,
+.cppiForm,
+.cstate,
+.cnamePlan {
+    display: inline;
+    margin-left: 6px;
+}
+
+.archivedPlans,
+.carchivedPlans{
+	display: inline;
+    margin-left: 6px;
+}
+.formWatchpoint,
+.cformWatchpoint {
+    margin-left: 33px;
+}
+
+.timeformall,
+.ctimeformall {
+    display: inline;
+    margin-left: 0px;
+}
+
+.formEmail,
+.cformEmail {
+    margin-left: 6px;
+}
+
+.timeFrom,
+.ctimeFrom {
+	display: inline;
+    margin-left: 31px;
+}
+
+.timeFromend,
+.ctimeFromend {
+	display: inline;
+    margin-left: 37px;
+}
+
+.oprationFroms,
+.coprationFroms {
+    margin-top: 15px;
+    margin-left: 6px;
+}
+
+.ppiForm,
+.cppiForm {
+    margin-left: 31px;
+}
+
+.block-headerFrom {
+    display: inline-block;
+}
+
+.block-titleFrom {
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 4px 23px 4px 2px;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+#fromPpi {
+    vertical-align: text-bottom;
+    width: 30px;
+}
+
+#cfromPpi {
+    vertical-align: text-bottom;
+    width: 30px;
+}
+
+.mailbox {
+    margin-left: 41px;
+}
+
+.saveemail {
+    margin-left: 35px;
+}
+
+.cstate {
+    margin-left: 29px;
+}
+
+.delform, .cdelform{
+    margin-left: 10px;
+    height: 29px;
+}
+
+.bootstrap-select {
+    width: 47.8%;
+}
+
+.bootstrap-select.btn-group {
+    margin-left: -32px;
+}
+
+.oprationFroms .dropdown-menu,
+.coprationFroms .dropdown-menu {
+    height: 220px !important;
+}
+
+.oprationFroms .dropdown-menu>ul,
+.coprationFroms .dropdown-menu>ul {
+    padding-bottom: 10px !important;
+}
+
+/* 计划管理部分 */
+ .manageEmail,.addemail {
+	margin-left: 14px;
+} 
+.managestep {
+	margin-left: 6px;
+	width: 23%;
+}
+.managemail {
+	margin-left: 32px;
+}
+.managebox {
+	margin-left: 38px;
+}
+.managedelform {
+	height: 29px;
+	margin-left: 6px;
+}
+
+/* 计划部分文字对齐 */
+.lname,.clname {
+    letter-spacing: 4px;
+}
+.linput,.clinput {
+    margin-left: 2px;
+}
+.ltwoname,.cltwoname {
+    letter-spacing: 37px;
+}
+.ltwoinput,.cltwoinput{
+    margin-left: -32px;
+}
+.ltwoppi, .cltwoppi {
+    margin-left: -39px !important;
+ }
+.lendtime,.clendtime {
+    letter-spacing: 13px;
+ }
+.linputend,.clinputend {
+    margin-left: -6px;
+}
+.lopiont,.clopiont{
+	letter-spacing: 11px;
+}
+.lopinput,.clopinput {
+    margin-left: -5px;
+}
+.emailclick {
+    margin-left: 75px;
+}

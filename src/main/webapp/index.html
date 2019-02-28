@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="renderer" content="webkit"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>首页</title>
+    <!--[if lt IE 9]>
+    <script src="js/bootstrap/html5shiv.min.js"></script>
+    <script src="js/bootstrap/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 9]> 
+        <style type="text/css">
+		    .maincontent table { margin-bottom: -5px !important; }
+	     </style>
+     <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="customcss/common.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+ 	<link rel="stylesheet" href="customcss/alarm/alarm.css">
+	<link rel="stylesheet" href="customcss/Linearicons.css">
+	<link rel="stylesheet" href="customcss/jebox.css"> 
+</head>
+<body>
+<div class="content">
+    <div class="header">
+        <div class="logout cursor" data-toggle="modal" data-target="#logout"  title="注销">
+			<i class="lnr lnr-power-switch" style="font-size: 27px;margin-top: -3px;color: #E0E0E0;"></i>
+		</div>
+	    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+			<div class="modal-dialog" style="width: 20%;">
+				<div class="modal-content">
+					<div class="modal-header logout-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							温馨提示
+						</h4>
+					</div>
+					<div class="modal-body text-center">
+						您确定要退出系统吗？
+					</div>
+					<div class="modal-footer logout-footer">
+					    <button type="button" class="btn btn-primary logout-btn">
+							确定
+						</button>
+						<button type="button" class="btn btn-default logout-false" data-dismiss="modal">
+							取消
+						</button>
+					</div>
+				</div>
+			</div>
+	    </div>
+    </div>
+    <div class="mainbody">
+        <div class="more more1 con">
+			<div class="more_left" id="leftdiv">
+				<a href="#"></a>
+			</div>
+        </div>
+        <div class="maincontent">
+	        <table class="table table-responsive main con">
+	            <tr class="list1" id="topTab">
+	            </tr>
+	        </table>
+	        <table class="table table-responsive main con">
+	            <tr class="list2"  id="tab">
+	            </tr>
+	    	</table>
+    	</div>
+        <div class="more more2 con">
+			 <div class="spc" id="rightdiv" >
+				<a href="#"></a>
+			 </div>
+		</div>
+		<div class="footer w-100">
+			<div class="footer-width"></div>
+			<img class="img-responsive" src="images/slogin.png"/>
+			<div class="footer-width"></div>
+		</div>
+	</div>
+	<div class="logoindex">
+        <img class="img-responsive" src="images/logoindex.png" />
+    </div>
+    <!-- <div id="erweima" style="position: absolute;left: 50%;margin-left: -100px;">
+    	<img class="img-responsive" src="images/erweima.png" />
+    </div> -->
+</div>
+<div id="main" class="p-relative" role="main"></div>
+<script src="js/jQuery/jquery.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="customjs/jsc.js"></script>
+<script src="customjs/logout.js"></script>
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Package: ipmweb
+Version: 2.1
+Section: utils
+Priority: optional
+Architecture: amd64
+Depends: mysql-client-5.5, mysql-client-core-5.5, mysql-common, mysql-server-5.5, mysql-server-core-5.5, openssh-client, openssh-server
+Maintainer: protocolsoft <service@protocolsoft.com>
+Description: ipms web service program
+

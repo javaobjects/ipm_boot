@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="renderer" content="webkit"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compitable" content="IE=edge">
+    <title>首页</title>
+    <!--[if lt IE 9]>
+    <script src="js/bootstrap/html5shiv.min.js"></script>
+    <script src="js/bootstrap/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 9]> 
+        <style type="text/css">
+		    .maincontent table { margin-bottom: -5px !important; }
+	     </style>
+     <![endif]-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="customcss/common.css">
+    <link rel="stylesheet" href="customcss/login.css">
+    <link rel="stylesheet" href="customcss/jebox.css">
+</head>
+<body id="skin-blur-riluo" class="indeBox">
+    <div class="logoindex">
+        <img src="images/logoinx.png" />
+    </div>
+<div class="loginsx animated fadeIn">
+	<div class="logincontent">
+	    <div class="sange">
+	        	<img class="img-responsive" src="images/slogina.png"/>
+	    </div>
+	    <div class="shuxian">
+	        <img src="images/centerline.png" alt="">
+	    </div>
+		<section class="weizhi login animated bounceInDown">
+		   <div class="headers">
+		       用户登录
+		    </div>
+		    <div class="content">
+		            <input id="name" name="username" type="text"/>
+		        <img class="login-img" src="images/admin.png">
+		            <input id="pwd" name="pwd" type="password"/>
+		        <img class="login-img" src="images/psw.png">
+		        <div class="login-prop">
+		        	<div class="login-lose"></div>   <!-- 登录失败 -->
+		        	<div class="login-admin"></div>   <!-- 用户名错误 -->
+		        	<div class="login-psw"></div>   <!-- 密码错误 -->
+		        	<div class="login-adair"></div>   <!-- 用户名不能为空 -->
+		        	<div class="login-pwair"></div>   <!-- 密码不能为空 -->
+		        	<div class="login-times"></div>   <!-- 登录次数达到系统上限 -->
+		        	<!-- <div class="login-dates"></div>   到期不能登陆 -->
+		        </div>
+		        <div class="login-sub" >
+		            <button type="button" id="button-s" class="btn" data-loading-text="请稍后...">
+		                                            登&nbsp;&nbsp;录
+		            </button>
+		        </div>
+		    </div>
+		</section>
+	</div>
+</div>
+<script src="js/jQuery/jquery.min.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/loginBackground.js"></script>
+<script src="customjs/login.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/login-dns/tripledes.js"></script>
+<script src="customjs/login-dns/mode-ecb.js"></script>
+</body>
+</html>

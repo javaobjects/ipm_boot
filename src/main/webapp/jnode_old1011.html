@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>拓朴图</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-select.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="customcss/style.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/generics.css">
+    <link rel="stylesheet" href="customcss/jnode/jnode.css">
+    <link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+    <link rel="stylesheet" href="customcss/custjedate.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+    <link rel="stylesheet" href="customcss/alarm/alarm.css">
+    <link rel="stylesheet" href="customcss/Linearicons.css">
+    <link rel="stylesheet" href="customcss/jebox.css"> 
+</head>
+<body>
+<div class="mloadingDiv hide">
+    <div class="loadingDivChild">
+        正在从数据库请求数据，请您耐心等候.............
+    </div>
+</div>
+<header id="header">
+</header>
+<section id="main" class="container">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <!-- Side Menu -->
+        <ul class="list-unstyled side-menu">
+        </ul>
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+        <div class="block-area">
+            <div class="row">
+                <div id="cond_query" class="col-md-2">
+                    <form id="search_form" style="margin-top:10px;">
+                        <!--<div class="form-group m-t-5">-->
+                            <!--&lt;!&ndash;<label for="openJtopo" style="margin-bottom: 9px;">打开拓朴</label>&ndash;&gt;-->
+                            <!--<label for="openJtopo">打开拓朴</label>-->
+                            <!--<select id="openJtopo" class="selectpicker form-control kpi" data-style="form-control">-->
+                                <!--&lt;!&ndash;<option value="flow" selected="selected">实时流量(默认)</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="ethernetPkts">数据包速率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="serverDurDelay">服务端通信时延</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="clientDurDelay">客户端通信时延</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="serverConDelay">服务端TCP握手时延</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="clientConDelay">客户端TCP握手时延</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="netPktLost">网络传输丢包率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="serverPktLost">服务端丢包率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="clientPktLost">客户端丢包率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="attemptedNum">尝试连接数量</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="finAckPkts">关闭连接数量</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="tinyPkts">小包速率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="tinyPktsRatio">小包比率</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="tcpTraffic">TCP流量</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="udpTraffic">UDP流量</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="appDelay">应用处理时延</option>&ndash;&gt;-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+
+
+                        <div class="form-group m-t-5">
+                            <label>开始时间</label>
+                            <input id="inpstart" class="datainp inptime form-control" type="text" value="">
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label>结束时间</label>
+                            <input id="inpend" class="datainp inptime form-control" type="text">
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label for="timelidu">时间粒度</label>
+                            <select name="" id="timelidu" class="selectpicker form-control" data-style="form-control">
+                                <option value="10">10秒</option>
+                                <option value="60">60秒</option>
+                                <option value="3600">1小时</option>
+                                <option value="86400">24小时</option>
+                            </select>
+                        </div>
+                        <div class="form-group m-t-5">
+                            <!--<label>查询IP:</label>-->
+                            <label>服务端IP</label>
+                            <input id="findText1" class="form-control" type="text">
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label>子网或网段</label>
+                            <input id="findText2" class="form-control" type="text">
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label for="watchpoint">观察点</label>
+                            <select id="watchpoint" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+                                <option value="0">请选择...</option>
+                            </select>
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label>通信对数量</label>
+                            <!--<input id="Ipnumber" class="form-control" type="text" value="2000">-->
+                            <input id="Ipnumber" class="form-control" type="text" value="200">
+                        </div>
+                        <div class="form-group m-t-5">
+                            <label for="groupType" style="margin-bottom: 9px;">KPI</label>
+                            <select id="groupType" class="selectpicker form-control kpi" data-style="form-control">
+                                <!--<option value="flow" selected="selected">实时流量(默认)</option>-->
+                                <!--<option value="ethernetPkts">数据包速率</option>-->
+                                <!--<option value="serverDurDelay">服务端通信时延</option>-->
+                                <!--<option value="clientDurDelay">客户端通信时延</option>-->
+                                <!--<option value="serverConDelay">服务端TCP握手时延</option>-->
+                                <!--<option value="clientConDelay">客户端TCP握手时延</option>-->
+                                <!--<option value="netPktLost">网络传输丢包率</option>-->
+                                <!--<option value="serverPktLost">服务端丢包率</option>-->
+                                <!--<option value="clientPktLost">客户端丢包率</option>-->
+                                <!--<option value="attemptedNum">尝试连接数量</option>-->
+                                <!--<option value="finAckPkts">关闭连接数量</option>-->
+                                <!--<option value="tinyPkts">小包速率</option>-->
+                                <!--<option value="tinyPktsRatio">小包比率</option>-->
+                                <!--<option value="tcpTraffic">TCP流量</option>-->
+                                <!--<option value="udpTraffic">UDP流量</option>-->
+                                <!--<option value="appDelay">应用处理时延</option>-->
+                            </select>
+                        </div>
+                        <!--<div class="form-group m-t-5">-->
+                            <!--<label for="alarm-button" class=" cursor" style=" margin-right: 2px;">告警提示</label>-->
+                            <!--<input type="checkbox" id="alarm-button" title="告警提示" class="cursor" checked="checked" style="position: relative;top: 3px;"/>-->
+                        <!--</div>-->
+                        <div class="form-group m-t-5" style="height: 34px;;">
+                            <button id="searchButton" type="button" class="btn m-t-5" style="float: right;margin-bottom: 10px;">确定</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-10">
+                    <canvas id="canvas">
+                        您的浏览器不支持Html5 canvas，请换一个浏览器。
+                    </canvas>
+                    <div name="topo_toolbar" class="panel mypanel">
+                        <div class="panel-body mypanel-body">
+                            <div class="btn-group mybtn-group">
+<!--                                <button name="refresh" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="刷新" onclick="javascript:location.reload();"> <span class="glyphicon glyphicon-refresh cursor"></span> </button>
+                                <button name="default" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="初始状态"> <span class="glyphicon glyphicon-home sdefault cursor"></span> </button>-->
+                                <button name="select" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="框选模式"> <span class="glyphicon glyphicon-check sselect cursor"></span> </button>
+                                <button name="center" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="居中显示"> <span class="glyphicon glyphicon-screenshot scenter cursor"></span> </button>
+                                <!--<button name="export_image" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="导出PNG"> <span class="glyphicon glyphicon-picture sexport_image cursor"></span> </button>-->
+                                <!--<button name="full_screen" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="全屏"> <span class="glyphicon glyphicon-fullscreen sfull_screen cursor"></span> </button>-->
+                                <button name="save" type="button" class="btn btn-sm btn-sus move hide" data-toggle="tooltip" data-placement="bottom" data-original-title="保存状态"> <span class="glyphicon glyphicon-comment ssave cursor"></span> </button>
+                                <button name="showIP" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="显示IP"> <span class="glyphicon glyphicon-italic sshowIP cursor"></span> </button>
+                                <!--<button name="usrerSeting" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="匹配用户设置"> <span class="glyphicon glyphicon-asterisk susrerSeting cursor"></span> </button>-->
+                                <button name="explain" type="button" class="btn btn-sm btn-sus move" data-toggle="tooltip" data-placement="bottom" data-original-title="帮助"> <span class="glyphicon glyphicon-question-sign sexplain cursor"></span> </button>
+                                <div class="input-group input-group-sm dropdown hide qsave">
+                                    <button class="btn btn-sm btn-sus dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:100px;"> 请求保存 <span class="caret" style="position: absolute;top: 12px;"></span> </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="exemple">
+                        <ul class="media-list">
+                            <h1>图&nbsp;&nbsp;例</h1>
+                            <!--<li class="media">-->
+                                <!--<a class="pull-left" href="#"> <img class="media-object" src="images/subnet.png" alt="" /></a>-->
+                                <!--<div class="media-body">-->
+                                    <!--<span>子网</span>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <li class="media">
+                                <a class="pull-left" href="#"> <img class="media-object" src="images/server.png" alt="主机/网元" /></a>
+                                <div class="media-body">
+                                    <span>主机/网元</span>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left" href="#"> <img class="media-object" src="images/port.png" alt="端口" /></a>
+                                <div class="media-body">
+                                    <span>端口</span>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="" href="#"> <img class="media-object" src="images/tcolor.png" alt="kpi" /></a>
+                                <div class="media-body">
+                                    <span>KPI从左至右值由小到大</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="text" id="jtopo_textfield" style="color:#000" />
+                    <ul id="contextmenu">
+                        <li><i class="fontPtcolor glyphicon glyphicon-asterisk"></i><a class="white">复制当前对象IP</a></li>
+                        <li class="showCenter"><i class="fontPtcolor glyphicon glyphicon-certificate"></i><a class="white">以此为中心显示</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-trash"></i><a class="white">删除对象</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-cog controlToolbar"></i><a class="white">隐藏工具栏</a></li>
+                    </ul>
+                    <ul id="linkmenu">
+                        <li><i class="fontPtcolor glyphicon glyphicon-transfer"></i><a class="white link">修改颜色(随机)</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-link"></i><a class="white link">连线加粗</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-paperclip"></i><a class="white link">连线变细</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-tasks"></i><a class="white link">变成虚线</a></li>
+                        <li><i class="fontPtcolor glyphicon glyphicon-align-justify"></i><a class="white link">变成实线</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form class="form_ip hide">
+            <span>IP/掩码位:</span>
+            <input class="in" size="3" value="10" name="ip_1" />
+            <input class="in" size="3" value="0" name="ip_2" />
+            <input class="in" size="3" value="0" name="ip_3" />
+            <input class="in" size="3" value="5" name="ip_4" />
+            <input class="in" size="2" value="24" name="bits" />
+            <span> <br /> <b>结果结果:</b> </span>
+            <table summary="result" border="1" cellspacing="1" cellpadding="0">
+                <tbody>
+                <tr style="display: none;">
+                    <td> <span>可用地址:</span> </td>
+                    <td> <input readonly="" size="10" name="numofaddr" /> </td>
+                </tr>
+                <tr style="display: none;">
+                    <td> <span>掩码:</span> </td>
+                    <td> <input readonly="" size="3" name="snm_1" /> <input readonly="" size="3" name="snm_2" /> <input readonly="" size="3" name="snm_3" /> <input readonly="" size="3" name="snm_4" /> </td>
+                </tr>
+                <tr style="display: none;">
+                    <td> <span>网络:</span> </td>
+                    <td> <input readonly="" size="3" name="nwadr_1" /> <input readonly="" size="3" name="nwadr_2" /> <input readonly="" size="3" name="nwadr_3" /> <input readonly="" size="3" name="nwadr_4" /> </td>
+                </tr>
+                <tr>
+                    <td> <span>第一个可用:</span> </td>
+                    <td> <input readonly="" size="3" name="firstadr_1" /> <input readonly="" size="3" name="firstadr_2" /> <input readonly="" size="3" name="firstadr_3" /> <input readonly="" size="3" name="firstadr_4" /> </td>
+                </tr>
+                <tr>
+                    <td> <span>最后可用：</span> </td>
+                    <td> <input readonly="" size="3" name="lastadr_1" /> <input readonly="" size="3" name="lastadr_2" /> <input readonly="" size="3" name="lastadr_3" /> <input readonly="" size="3" name="lastadr_4" /> </td>
+                </tr>
+                <tr style="display: none;">
+                    <td> <span>广播:</span> </td>
+                    <td> <input readonly="" size="3" name="bcast_1" /> <input readonly="" size="3" name="bcast_2" /> <input readonly="" size="3" name="bcast_3" /> <input readonly="" size="3" name="bcast_4" /> </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </section>
+    <!-- Older IE Message -->
+    <!--[if lt IE 9]>
+    <div class="ie-block">
+        <h1 class="Ops">抱歉！</h1>
+        <p>您正在使用一个过时的Internet Explorer版本，升级到以下任何Web浏览器，以便访问该网站的最大功能。 </p>
+        <ul class="browsers">
+            <li>
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Google Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.firefox.com.cn/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Mozilla Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.oupeng.com/download">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/cn/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>Internet Explorer(New)</div>
+                </a>
+            </li>
+        </ul>
+        <p>升级你的浏览器更安全和更快的网络体验。 <br/>感谢你的支持...</p>
+    </div>
+    <![endif]-->
+</section>
+<!--模态框（Modal）-->
+<div class="modal fade" id="myModal" data-show="false" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                <h4 class="modal-title" id="myModalLabel">操作框 </h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered  table-condensed table-responsive hide">
+                    <thead>
+                    <tr>
+                        <th>保存名</th>
+                        <th>操作时间</th>
+                        <th>删除保存</th>
+                    </tr>
+                    </thead>
+                    <tbody class="addOption">
+                    <!--<tr>-->
+                        <!--<td>保存名</td>-->
+                        <!--<td>操作时间</td>-->
+                        <!--<td>删除保存</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+                <div class="modal-body-div hide">
+                </div>
+           <!--     <div class="form-horizontal">
+                </div>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary t-click" data-dismiss="modal" style="right: 0;">确定</button>
+                <button type="button" class="btn btn-default f-click" data-dismiss="modal" style="right: 0;">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<script src="js/jQuery/jquery.min.js"></script> <!-- jQuery Library -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/header.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="js/bootstrap/bootstrap-select.min.js"></script>
+<script src="js/bootstrap/bootstrap-select-zh_CN.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+<script src="customjs/sidebar.js"></script>
+<script src="js/jtopo/jtopo-0.4.8-min.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="customjs/timeTogoback.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="js/jQuery/jquery-mousewheel-3.1.9/jquery.mousewheel.js"></script>
+<script src="customjs/jnode/jnode.js"></script>
+<script src="customjs/search.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+</body>
+</html>

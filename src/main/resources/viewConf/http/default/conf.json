@@ -1,0 +1,36 @@
+{
+	"graph" : [
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/appController/getPlotData.do",
+			"moduleId" : 4,
+			"busiId" : 0,
+			"plotId" : 102,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/appController/getPlotData.do",
+            "moduleId" : 4,
+			"busiId" : 0,
+			"plotId" : 131,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/appController/getPlotData.do",
+            "moduleId" : 4,
+			"busiId" : 0,
+			"plotId" : 133,
+			"plotTypeId": 1
+		},
+		{
+			"ipmCenterId" : 0,
+			"urlPath" : "/appController/getPlotData.do",
+            "moduleId" : 4,
+			"busiId" : 0,
+			"plotId" : 273,
+			"plotTypeId": 1
+		}
+	]
+}

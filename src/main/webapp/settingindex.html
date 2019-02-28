@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+	<title>系统设置与管理</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="customcss/themify-icons.css">
+	<link rel="stylesheet" href="customcss/Linearicons.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="customcss/style.css">
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/generics.css">
+	<link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+	<link rel="stylesheet" href="customcss/custjedate.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+	<link rel="stylesheet" href="customcss/alarm/alarm.css">
+	<link rel="stylesheet" href="customcss/jebox.css"> 
+</head>
+<body>
+<header id="header">
+</header>
+<div class="clearfix"></div>
+<section id="main" class="p-relative" role="main">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed">
+        <!-- Side Menu -->
+        <ul class="list-unstyled side-menu top0">
+        </ul>
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+    	<div class="block-area">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block-header cursor" data-original-title="">
+						<h3 class="block-title">云端管理设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-minus"></i></a>
+						</div>
+					</div>
+					<div class="block-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group m-t-15">
+								<label for="innerIp" class="col-md-3 setlable">云端服务中心IP</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="xpmIp" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s xpmIpSure">确定</button>
+						<span class="xpmIpspan"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block-area  m-f-15" id="defaultStyle">
+			<div class="block-header cursor" data-original-title="">
+				<h3 class="block-title">系统信息</h3>
+				<div class="block-icon">
+					<a class="btn-minimize"><i class="ta-plus"></i></a>
+				</div>
+			</div>
+			<div class="block-content sys-content">
+				<table class="table tile table-hover" style="margin-bottom: 0;">
+					<thead>
+					<tr>
+						<th>类别</th>
+						<th>内容</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>用户名称</td>
+						<td id="userName" class="systd"></td>
+					</tr>
+					<tr>
+						<td>联系人</td>
+						<td id="contacts" class="systd"></td>
+					</tr>
+					<tr>
+						<td>电话</td>
+						<td id="telephone" class="systd"></td>
+					</tr>
+					<tr>
+						<td>邮箱</td>
+						<td id="email" class="systd"></td>
+					</tr>
+					<tr>
+						<td>产品型号</td>
+						<td id="productNo" class="systd"></td>
+					</tr>
+					<tr>
+						<td>有效期</td>
+						<td id="validterm" class="systd"></td>
+					</tr>
+					<tr>
+						<td>最大分析流量(Mb)</td>
+						<td id="maxFlow" class="systd"></td>
+					</tr>
+					<tr>
+						<td>多观察点
+						<td id="manyWatchpoint" class="systd"></td>
+					</tr>
+					<tr>
+						<td>服务端</td>
+						<td id="server" class="systd"></td>
+					</tr>
+					<tr>
+						<td>客户端</td>
+						<td id="client" class="systd"></td>
+					</tr>
+					<tr>
+						<td>HTTP</td>
+						<td id="http" class="systd"></td>
+					</tr>
+					<tr>
+						<td>MYSQL</td>
+						<td id="mysql" class="systd"></td>
+					</tr>
+					<tr>
+						<td>ORACLE</td>
+						<td id="oracle" class="systd"></td>
+					</tr>
+					<tr>
+						<td>SQLServer</td>
+						<td id="sqlserver" class="systd"></td>
+					</tr>
+					<tr>
+						<td>URL</td>
+						<td id="url" class="systd"></td>
+					</tr>
+					<tr>
+						<td>报文</td>
+						<td id="message" class="systd"></td>
+					</tr>
+					<tr>
+						<td>流量储存</td>
+						<td id="flowStorage" class="systd"></td>
+					</tr>
+					<tr>
+						<td>地图</td>
+						<td id="map" class="systd"></td>
+					</tr>
+					<tr>
+						<td>拓扑图</td>
+						<td id="topo" class="systd"></td>
+					</tr>
+					<tr>
+						<td>储存通信队</td>
+						<td id="trafficPair" class="systd"></td>
+					</tr>
+					<tr>
+						<td>iDigger</td>
+						<td id="digger" class="systd"></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="block-area">
+			<div class="row">
+				<div class="col-md-12 m-f-15">
+					<div class="block-header cursor" data-original-title="">
+						<h3 class="block-title">管理网口设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group m-t-15">
+								<label for="ipAdress" class="col-md-3 setlable">IP地址</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="ipAdress" placeholder="IP地址" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="maskByte" class="col-md-3 setlable">掩码位数</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="maskByte" placeholder="掩码位数" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="defaultGateway" class="col-md-3 setlable">默认网关</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="defaultGateway" placeholder="默认网关" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s" id="updateManageNetworkInfoUbuntu">确定</button>
+						<span class="updateManageNetworkInfoUbuntuSpan"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block-area">
+			<div class="table-responsive tableMinHeW">
+				<table id="networkCard"></table>
+			</div>
+		</div>
+		<div class="block-area">
+			<div class="row">
+				<div class="col-md-12 m-f-15">
+					<div class="block-header m-t-10 cursor" data-original-title="">
+						<h3 class="block-title">数据存储设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group m-t-15">
+								<span class="col-md-3 setlable">文件块大小</span>
+								<div class="col-md-7">
+									<label class="checkbox-inline"> <input type="radio" name="optionsRadios" value="500MB" id="fileSize" />500MB </label>
+									<label class="checkbox-inline"> <input type="radio" name="optionsRadios" value="1G" />1G </label>
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="dataSave-input" class="col-md-3 setlable">原始数据存储目录</label>
+								<span class="clearTargetDirSpan"></span>
+								<div class="col-md-7">
+									<div class="input-group">
+										<input type="text" class="uneditableNew-input form-control" id="dataSave-input" disabled="" />
+										<div class="input-group-btn">
+											<span class="btn btn-file btn-alt btn-sm clearTargetDir fileupload-new">清空</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="histroyfile" class="col-md-3 setlable">历史提取文件目录</label>
+								<span class="clearTargetDirSpan"></span>
+								<div class="col-md-7">
+									<div class="input-group">
+										<input type="text" class="uneditableNew-input form-control" id="histroyfile" disabled="" />
+										<div class="input-group-btn">
+											<span class="btn btn-file btn-alt btn-sm fileupload-new clearTargetDir">清空</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="AnalysisData-input" class="col-md-3 setlable">分析数据目录</label>
+								<span class="clearTargetDirSpan"></span>
+								<div class="col-md-7">
+									<div class="input-group">
+										<input type="text" class="uneditableNew-input form-control" id="AnalysisData-input" disabled="" />
+										<div class="input-group-btn">
+											<span class="btn btn-file btn-alt btn-sm fileupload-new clearTargetDir">清空</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="DiskUse-input" class="col-md-3 setlable">磁盘利用率</label>
+								<div class="col-md-5">
+									<div class="input-group">
+										<input type="text" class="uneditableNew-input form-control" id="DiskUse-input" />
+									</div>
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s" id="operationDataStorageSet">确定</button>
+						<span class="operationDataStorageSet-span"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header m-t-10 cursor" data-original-title="">
+						<h3 class="block-title">数据包去重</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<div class="form-group m-t-l m-t-15">
+							<span>操作</span>
+							<label class="checkbox-inline"> <input type="radio" name="optionsRadios1" value="1" id="onqc" />开启去重 </label>
+							<label class="checkbox-inline"> <input type="radio" name="optionsRadios1" value="0" id="offqc" />关闭去重 </label>
+						</div>
+						<button class="btn btn-sm m-t-l m-t-15 m-t-u dataDedup">确定</button>
+						<span class="dataDedupSpan"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header m-t-10 cursor" data-original-title="">
+						<h3 class="block-title">智能基线展示设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<div class="form-group m-t-l m-t-15">
+							<span>操作</span>
+							<label class="checkbox-inline"> <input type="radio" name="alarmJ" value="1" id="alarmJOpen" />开启 </label>
+							<label class="checkbox-inline"> <input type="radio" name="alarmJ" value="0" id="alarmJClose" />关闭 </label>
+						</div>
+						<button class="btn btn-sm m-t-l m-t-15 m-t-u alarmJEnter">确定</button>
+						<span class="alarmJEnterSpan"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header m-t-10 cursor" data-original-title="">
+						<h3 class="block-title">抽样比例设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group m-t-15">
+								<label for="samProp" class="col-md-3 setlable">抽样比例</label>
+								<div class="col-md-7">
+									<input type="text" class="uneditableNew-input form-control" id="samProp" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s samPropSure">确定</button>
+						<span class="samPropspan"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header m-t-10 cursor" data-original-title="">
+						<h3 class="block-title">内网网段设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group m-t-15">
+								<label for="innerIp" class="col-md-3 setlable">内网网段</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="innerIp" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s innerIpSure">确定</button>
+						<span class="innerIpspan"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header cursor m-t-10" data-original-title="">
+						<h3 class="block-title">系统时间设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group datep m-t-15">
+								<label class="col-md-3 settime setlable" for="SystemTimeIng">当前系统时间</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm datainp" id="SystemTimeIng" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="asyncFalseServerTime" class="col-md-3 settime setlable">时间同步服务器</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="asyncFalseServerTime" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s" id="sameServer">确定</button>
+						<span class="sameServer-span" style="position: relative;top: 5px; left: 22px;"></span>
+					</div>
+				</div>
+				<div class="col-md-12 m-f-15">
+					<div class="block-header cursor m-t-10" data-original-title="">
+						<h3 class="block-title">邮件发送设置</h3>
+						<div class="block-icon">
+							<a class="btn-minimize"><i class="ta-plus"></i></a>
+						</div>
+					</div>
+					<div class="block-content sys-content">
+						<form class="form-horizontal form-label-left">
+							<div class="form-group datep m-t-15">
+								<label class="col-md-3  setlable" for="emailServer">邮件服务器（SMTP）</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="emailServer" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label class="col-md-3  setlable" for="emailPort">端口</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="emailPort" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="emailUserName" class="col-md-3  setlable">邮箱用户名</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="emailUserName" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="emailPassword" class="col-md-3  setlable">邮箱密码/授权码</label>
+								<div class="col-md-7">
+									<input type="password" class="form-control input-sm" id="emailPassword" />
+								</div>
+							</div>
+							<div class="form-group m-t-15">
+								<label for="sentMname" class="col-md-3 setlable">发送人名称</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control input-sm" id="sentMname" />
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-sm m-t-10 m-t-s" id="emailEnter" data-loading-text="请稍后。。。" >确定</button>
+						<span class="emailEnter-span" style="position: relative;top: 5px; left: 22px;"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="block-area" style="margin-bottom: 15px;">
+			<div class="table-responsive tableMinHeW">
+				<table id="SyslogTable"></table>
+			</div>
+		</div>
+		
+    </section>
+    <!-- Older IE Message -->
+    <!--[if lt IE 9]>
+    <div class="ie-block">
+        <h1 class="Ops">抱歉！</h1>
+        <p>您正在使用一个过时的Internet Explorer版本，升级到以下任何Web浏览器，以便访问该网站的最大功能。 </p>
+        <ul class="browsers">
+            <li>
+                <a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Google Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.firefox.com.cn/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Mozilla Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.oupeng.com/download">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/cn/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>Internet Explorer(New)</div>
+                </a>
+            </li>
+        </ul>
+        <p>升级你的浏览器更安全和更快的网络体验。 <br/>感谢你的支持...</p>
+    </div>
+    <![endif]-->
+</section>
+<div class="modal fade in" id="addtableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title">
+					新增
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary footer-btn" id="btn-addtableRow">
+					确定
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade in" id="changetableRow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title">
+					修改
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary footer-btn" id="btn-changetableRow">
+					确定
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade in" id="Confirm-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title">
+					删除
+				</h4>
+			</div>
+			<div class="modal-body">
+				确定删除此行吗？
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary footer-btn" data-dismiss="modal" id="btn-ConfirmdelRow">
+					确定
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- jQuery -->
+<script src="js/jQuery/jquery.min.js"></script> <!-- jQuery Library -->
+<!-- Bootstrap -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/header.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+<script src="js/fileupload.min.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="customjs/timeTogoback.js"></script>
+<script src="customjs/sidebar.js"></script>
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="customjs/setting/network.card.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="customjs/bsTable/handlebsTable.js"></script>
+<script src="customjs/setting/setTing.js"></script>
+<script src="customjs/search.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+</body>
+</html>

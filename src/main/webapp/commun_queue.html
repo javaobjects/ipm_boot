@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 9 ]>
+<html  lang="en" class="ie9">
+<![endif]-->
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="UTF-8">
+	<title>通信对信息</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap-table.css">
+	<link rel="stylesheet" href="css/bootstrap/bootstrap-select.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="customcss/Linearicons.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/generics.css">
+	<link rel="stylesheet" href="css/jedate-6.0.0/jedate.css">
+	<link rel="stylesheet" href="customcss/style.css">
+	<link rel="stylesheet" href="customcss/custjedate.css">
+	<link rel="stylesheet" href="customcss/bootstrap-table-self.css">
+	<link rel="stylesheet" href="customcss/alarm/alarm.css">
+	<link rel="stylesheet" href="customcss/jebox.css">
+	<style type="text/css">
+	    #messsage {
+	       display: none;
+	       font-size: 14px;
+	       margin: 10px;
+	       text-align: center;
+	    }
+	</style>
+</head>
+<body>
+<header id="header">
+</header>
+<div id="main" class="container">
+	<!-- Sidebar -->
+	<aside id="sidebar">
+		<!-- Side Menu -->
+		<ul class="list-unstyled side-menu">
+		</ul>
+	</aside>
+	<div id="content" class="container">
+		<div class="block-area">
+			<div id="draw_charts_div" class="row m-t-15">
+				<div class=" col-md-12">
+					<div class="draw linedraw">
+						<div class="title">
+							<h2 class="tile-title" id="draw_title"></h2>
+							<div class="tile-config dropdown pull-right">
+								<a data-toggle="dropdown" class="tile-menu cursor"></a>
+								<ul class="dropdown-menu text-left">
+									<li><a class="five cursor">5分钟</a></li>
+									<li><a class="ten cursor">10分钟</a></li>
+									<li><a class="oneHours cursor">1小时</a></li>
+									<li><a class="oneDay cursor">一天</a></li>
+									<li><a class="oneWeek cursor">一周</a></li>
+								</ul>
+							</div>
+						</div>
+						<div id="draw_charts" style="height: 250px"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row m-t-15">
+				<div id="cond_query" class="col-md-2">
+					<form id="search_form" style="margin-top:10px;">
+						<div class="form-group m-t-10">
+							<!--<label for="groupType" style="margin-bottom: 9px;">统计分析维度</label>-->
+							<label for="groupType" style="margin-bottom: 9px;">聚合分析维度</label>
+							<select id="groupType" class="selectpicker form-control" data-style="form-control">
+								<option value="3">服务端IP、客户端IP分别相同</option>
+								<option value="1">服务端IP相同</option>
+								<option value="2">客户端IP相同</option>
+								<option value="4">服务端IP、端口相同</option>
+							</select>
+						</div>
+						<div class="form-group m-t-10">
+							<label>开始时间</label>
+							<input id="starttime" class="datainp inptime form-control" type="text">
+						</div>
+						<div class="form-group m-t-10">
+							<label>结束时间</label>
+							<input id="endtime" class="datainp inptime form-control" type="text">
+						</div>
+                        <div class="form-group m-t-10">
+                            <label for="xpmserver">XPM服务器</label>
+                            <select id="xpmserver" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+                                <option value="0">请选择...</option>
+                            </select>
+                        </div>
+						<div class="form-group m-t-10">
+							<label for="watchpoint">观察点</label>
+							<select id="watchpoint" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+								<option value="0">请选择...</option>
+							</select>
+						</div>
+						<div class="form-group m-t-10">
+							<label for="client">客户端</label>
+							<select id="client" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+								<option value="0">请选择...</option>
+							</select>
+						</div>
+						<div class="form-group m-t-10">
+							<label for="server">服务端</label>
+							<select id="server" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+								<option value="0">请选择...</option>
+							</select>
+						</div>
+						<div class="form-group m-t-10">
+							<label for="proto">公有协议</label>
+							<select id="proto" class="selectpicker form-control" data-live-search="true" data-style="form-control" data-size="10">
+								<option value="0">请选择...</option>
+							</select>
+						</div>
+                        <div class="form-group m-t-10">
+                            <label for="serverip">服务端IP</label>
+                            <input id="serverip" type="text" class="form-control">
+                        </div>
+                        <div class="form-group m-t-10">
+                            <label for="serverport">服务端端口</label>
+                            <input id="serverport" type="text" class="form-control">
+                        </div>
+						<div class="form-group m-t-10">
+							<label for="clientip">客户端IP</label>
+							<input id="clientip" type="text" class="form-control">
+						</div>
+						<button id="form_submit" type="button" class="btn m-t-10" style="float: right;margin-bottom: 10px;">确定</button>
+					</form>
+				</div>
+				<div id="tables" class="col-md-10">
+				    <div id="messsage">请通过操作图形中的关注区域输出通信对信息！</div>
+					<div id="txTableResponsive" class="table-responsive">
+						<table id="txTable"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 下载弹出框 -->
+<div class="modal fade" id="downLoadings" tabindex="-1" role="dialog" aria-labelledby="downLoadingsLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 20%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="downLoadingsLabel"></h4>
+			</div>
+			<div class="modal-body text-center">
+				<div class="form-group m-t-l m-t-15" id="loadSs">
+					<input type="radio" name="optionsRadios" value="0" />下载到本地
+					<input style="margin-left: 8px;" type="radio" name="optionsRadios" value="1" />在线解析
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" id="loadSure" data-loading-text="加载中...">
+					确定
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 20px;">
+					取消
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--可下载流量包-->
+<div class="modal fade" id="packDownload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel2">可下载流量包</h4>
+			</div>
+			<div class="modal-body">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"  style="right: -0.5%;">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- jQuery -->
+<script src="js/jQuery/jquery.min.js"></script>
+<!-- jQuery Library -->
+<!-- Bootstrap -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="customjs/header.js"></script>
+<!-- Bootstrap-table -->
+<script src="js/bootstrap/bootstrap-table.js"></script>
+<script src="js/bootstrap/bootstrap-table-zh-CN.js"></script>
+<script src="js/bootstrap/bootstrap-table-export.js"></script>
+<script src="js/bootstrap/tableExport.js"></script>
+<script src="customjs/table/bootstrap.table.util.js"></script>
+<script src="js/bootstrap/bootstrap-select.min.js"></script>
+<script src="js/bootstrap/bootstrap-select-zh_CN.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/jQuery/jedate-6.0.0/jquery.jedate.js"></script>
+<script src="js/highcharts/code/highcharts.js"></script>
+<script src="customjs/utils/shrink.js"></script>
+<script src="customjs/changeBackground.js"></script>
+<script src="customjs/highchartUtil/highchart.util.js"></script>
+<script src="customjs/timeTogoback.js"></script>
+<script src="customjs/queue/queue.js"></script>
+<script src="customjs/number-format.js"></script>
+<script src="customjs/sidebar.js"></script>
+<script src="js/jQuery/tdrage/Tdrag.js"></script>
+<script src="js/jQuery/timeStamp.js"></script>
+<script src="customjs/alarm/alarm.js"></script>
+<script src="customjs/queueTimeChoose.js"></script>
+<script src="customjs/search.js"></script>
+<script src="js/jquery.jebox.min.js"></script>
+<script src="customjs/colose.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+    "graph" : [
+        {
+            "ipmCenterId" : 0,
+            "urlPath" : "/plot/getPlotData.do",
+            "busiId" : 0,
+            "plotId" : 1004,
+            "plotTypeId": 1
+        },
+        {
+            "ipmCenterId" : 0,
+            "urlPath" : "/plot/getPlotData.do",
+            "busiId" : 0,
+            "plotId" : 1008,
+            "plotTypeId": 1
+        },
+        {
+            "ipmCenterId" : 0,
+            "urlPath" : "/plot/getPlotData.do",
+            "busiId" : 0,
+            "plotId" : 1009,
+            "plotTypeId": 1
+        },
+        {
+            "ipmCenterId" : 0,
+            "urlPath" : "/plot/getPlotData.do",
+            "busiId" : 0,
+            "plotId" : 1034,
+            "plotTypeId": 1
+        }
+    ]
+}
