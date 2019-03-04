@@ -1,2 +1,3 @@
 # ipm_boot
-ss
+前端所有技术：
+* jQuery v1.10.2
