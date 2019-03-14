@@ -1,5 +1,5 @@
 # ipm_boot
-前端所用技术： 霏霏
+前端所用技术：
 * jQuery Version: 1.10.2
 * jQuery UI - Version: 1.9.2
 * jquery.jeBox Version: 1.6 
