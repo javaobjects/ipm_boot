@@ -8,7 +8,7 @@
 * jqeury.mosewheel Version: 3.1.9
 * jQuery Gridly Version: 1.6.3
 * jQuery.jsPlumb Version: 1.62
-* jtopo Version:0.4.8
+* jtopo Version:0.4.8fd
 * Highcharts Version:6.0.2
 * Bootstrap Version: 3.1.1
 * Bootstrap-select Version: 1.12.4
