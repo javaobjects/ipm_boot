@@ -1,0 +1,91 @@
+<!--[if IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript" src="../../res/resource/js/plugins/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ext-all.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/SliderTip.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ux/LockingGridView.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/charts/FusionCharts.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/charts/FusionCharts.jqueryplugin.js"></script>
+         
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ux/Reorderer.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ux/ToolbarReorderer.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ux/PagingMemoryProxy.js"></script>
+		<script type="text/javascript" src="../../res/resource/js/ext-3.0.0/ux/RowEditor.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../res/resource/js/ext-3.0.0/ux/css/ux-all.css" />
+		<link rel="stylesheet" type="text/css" href="../../res/resource/js/ext-3.0.0/resources/css/ext-all.css"/>
+		<link rel="stylesheet" type="text/css" href="../../res/resource/js/ext-3.0.0/ux/css/LockingGridView.css" />
+		
+		
+		
+        <script>
+        window.onload = function() { 
+		var store=null;
+		 var loadMarsk = new Ext.LoadMask(document.body, {
+			msg : '数据加载中。。。。。。',
+			store:store
+			});
+			loadMarsk .show(); //显示
+        	$.ajax({
+        		url:'/cgi-bin/iDigger.cgi?url=/expertinfo',
+        		method: "POST",
+        		success:function(r) {
+        			    var obj=eval('('+r+')');
+	  	            	var jsonList = [];
+	  	            	var simpleJson = null;
+	  	            	var jsonKey=null;
+	  	            	for(var key in obj.Errors ){
+	  	            		jsonKey={};
+	  	            		jsonKey.key=key;
+	  	            		jsonKey.value=key; 
+	  	            	if(typeof(obj.Errors[key]) === 'object') {
+	  	            		 simpleJson = {};
+			  	        	 simpleJson.Protocol = obj.Errors[key]["Protocol"];
+			  	        	 simpleJson.Frequency = obj.Errors[key]["Frequency"];
+			  	        	 simpleJson.Group = obj.Errors[key]["Group"];
+			  	        	 simpleJson.Summary = obj.Errors[key]["Summary"];
+			  	        	 jsonList.push(simpleJson);
+			  	      }
+	  	           }
+	  	            	var store = new Ext.data.JsonStore({
+		  	  				fields:['Protocol','Frequency','Group','Summary'],
+		  	  				data:jsonList
+		  	  		    }); 
+						loadMarsk .hide();
+						var orgGrid=Ext.get("orgGrid");  //展示grid的容器
+	  	            	var grid = new Ext.grid.GridPanel({
+		  	  		        store: store,
+		  	  		        id:"grid",
+		  	  		        renderTo: Ext.getBody(),
+		  	  		        columns: [                                                              
+		  	  		            {id:'no',header: "Protocol", dataIndex: 'Protocol',},
+		  	  		            {header: "Frequency",dataIndex: 'Frequency',width:100},
+		  	  		            {header: "Group", dataIndex: 'Group',width:100},
+		  	  		            {header: "Summary", dataIndex: 'Summary',width:500}
+		  	  		        ],
+		  	  		        loadMask:"正在加载..",
+		  	  		        stripeRows: true,
+		  	  		        autoExpandColumn: 'no',
+		  	  		        width:orgGrid.getComputedWidth(),
+                       height:document.documentElement.clientHeight,
+	  	  		    });
+	  	            	   grid.render(orgGrid);  //把grid铺到id为grid的容器中
+						  window.onresize=function(){
+								grid.setWidth(0);
+								grid.setWidth(orgGrid.getComputedWidth());
+						};
+        		}
+         });
+       };
+ 	</script>
+</head>
+
+<body>
+<div id="orgGrid"></div>
+</body>
+</html>

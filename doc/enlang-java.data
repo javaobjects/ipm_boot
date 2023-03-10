@@ -1,0 +1,256 @@
+"本机","Localhost"
+
+"添加","Add "
+"保存","Save "
+"删除","Delete "
+"修改","Modify "
+"更新","Update "
+
+"清空","Clear "
+"目录"," Directory"
+
+"用户"," User"
+"用户登录"," login"
+"用户注销"," logout"
+"用户密码"," user password"
+
+"登录失效！请刷新页面或重新登录！","Logon failed! Please refresh and try again!"
+"添加失败，可能是模板名称重复导致！","Add failed! possibly duplicate template name!"
+"删除失败！系统模板不允许删除！","Delete failed! Can not delete system template!"
+"操作失败，用户权限验证未通过！","Operation failed! user authorization verification failed!"
+
+"添加失败！请稍后再试！","Add failed! Please try again later!"
+"修改失败！请稍后再试！","Modify failed! Please try again later!"
+"删除失败！请稍后再试！","Delete failed! Please try again later!"
+
+"删除成功！","Delete successfully!"
+"操作失败！","Operation failed!"
+
+"报告","Report"
+"-告警","-Alarm"
+"观察点-","Watchpoint-"
+"服务端-","Server-"
+"客户端-","Client-"
+"（自定义）","（Custom）"
+"自定义报表","Custom report"
+
+"告警数量统计列表","Alarm count list"
+
+"生成自定义报表，生成自定义报表的历史信息。","Generate history information for custom reports."
+"生成报告成功，但邮件发送失败，请用户核实邮件信息！","The report was generated successfully，but the email was sent unsuccessfully. Please verify the email information!"
+"报表生成失败，请稍后重试.","Report generation failed. Please try again later"
+
+"自定义报表生成失败，请核对报表名称是否重复，是否包含空格！","Failed to generate the custom report，please check whether the report name is repeated and whether it contains Spaces!"
+"自定义报表生成失败!请稍后重试","Custom report generation failed! Please try again later"
+"模板不存在，可能已经被删除，请核实后再操作！","The template does not exist，it may have been deleted，please verify before operation!"
+"系统文件缺失，请核实report文件是否布置在指定路径","The system file is missing. Please verify whether the report file is placed in the specified path"
+
+"更新数据存储设置","Update storage settings"
+"配置导出","export Settings"
+"配置导入","import Settings"
+"应用配置导入","Application configuration import"
+"应用配置导出","Application configuration export"
+
+"工作薄中第","In the workbook line "
+"行添加失败."," add failed"
+
+"URL添加错误：","URL add error:"
+"URL服务","URL Service"
+
+"应用可用性设置","Application availability settings"
+
+"全局热力图","Global thermal diagram"
+"XPM服务器设置","XPM Server setting"
+"流量下载","Traffic download"
+
+"获取程序异常！","Reques program exception!"
+"获取email设置信息失败！","Failed to get email Settings!"
+"获取企业微信设置信息失败！","Failed to get enterprise WeChat setting information!"
+
+"流量存储","Traffic store"
+"流量储存","Traffic store"
+
+"拓扑图","topplogy"
+
+"小于64","Less than 64"
+"大于1514","More than 1514"
+
+"编号","Num"
+"KPI名称","KPI"
+>Kpi名称<,>KPI<
+>KPI名称<,>KPI<
+
+"告警","Alarm"
+"告警最多的kpi排名","Ranking alarming kpis"
+"时间段内告警统计","Alarm statistics"
+"KPI告警分布","KPI alarm distribution"
+
+"告警响应","Response alarm"
+"告警删除","Response delete"
+
+"基线","Baseline"
+'智能告警阈值','Intelligent alarm threshold'
+'波测超时','Timeout wave test'
+'组合告警','Combination of alarm'
+'探针同步','Probe sync'
+
+"北京市","Beijing"
+"重庆市","Chongqing"
+
+"来自于","From "
+"的报表邮件"," report email"
+"请","Please"
+"接收来自于","Receive from "
+"的报表"," report"
+"删除报表失败！","Delete report failed"
+
+"添加失败！请稍后再试！","Add failed please try again later"
+
+"流量","Traffic"
+"其他","Other"
+"清空网卡管理与设置数据","Clear management card and settings"
+"重启服务器","Reboot server"
+"关闭服务器","Shut down server"
+
+"高级存储","Advanced storage"
+"标准存储方案","Standard storage"
+"更新标准存储","Update Standard storage"
+
+"用户登录超时，强制退出。","User login timeout to force exit."
+
+"SYSLOG服务器设置"," SYSLOG Server setting"
+"更新管理网口设置","Update management card settings"
+"重新分析网卡管理与设置","Restart analysis"
+"更新数据包去重","Update packet deduplication"
+"更新VLAN分析","Update VLAN analysis"
+"更新抽样比例","Update sampling scale"
+"更新负载入库","Update load entry"
+"修改智能基线状态","Modify baseline state"
+"更新内网网段设置","Update segment network settings"
+"更XPM服务器设置","Update XPM server settings"
+"更新系统时间设置","Update system time"
+
+"开启 (有效期至","Open（Valid until "
+"未开启","Close"
+
+"观察点","Watchpoint"
+"服务端","Server"
+"客户端","Client"
+"服务端-","Server-"
+"客户端-","Client-"
+"HTTP服务","Http"
+"ORACLE服务","Oracle"
+"SQLSERVER服务","Sqlserver"
+"MYSQL服务","Mysql"
+
+"生成授权信息加密文件成功","Generated authorization information successfully"
+"生成授权信息加密文件成功","Generated authorization information failed"
+"下载授权信息加密文件","Download the authorization information file"
+"上传授权文件","Upload authorization file"
+
+"标准输出=====","Stdout====="
+"标准错误=====","Stderr====="
+
+"亿个","Billion"
+"万个","Ten thousand"
+"个"," "
+
+"驾驶舱","Dashboard"
+"（本日）","（Today）"
+"（昨日）","（YesTerday）"
+"（日报）","（Daily）"
+"（周报）","（weekly）"
+"（月报）","（Monthly）"
+"（本周）","（This week）"
+"（上周）","（Last week）"
+"（本月）","（This Month）"
+"（上月）","（Last Month）"
+"本周","This week"
+"上周","Last week"
+"本月","This month"
+"上月","Last month"
+"今日","Today"
+"昨日","YesTerday"
+"定时日报","Regular daily report"
+"定时周报","Regular week report"
+"定时月报","Regular month report"
+"生成定时报表，生成定时报表的历史信息","Generate timing report，generate timing report history information"
+"生成定时报表，生成报表的历史信息","Generate regular report，generate report history information"
+
+"最大值：","Max："
+"-最小值：","-Min："
+" 最小值："," Min："
+" 平均值："," Avg："
+
+"下载报表","Download report"
+"删除历史报表信息，并删除与之对应的报表","Delete historical report information and delete corresponding reports"
+"系统定时","System timing "
+"删除最近的","Delete the latest"
+"条以外的历史报表信息，并删除与之对应的报表","History report information outside of the"
+
+"添加模板","Add template"
+"修改模板","Modify template"
+"删除模板，并删除所有使用该模板的计划。","Delete the template and remove all plans to use it."
+"删除用户时删除与用户之前创建的所有模板，和使用这些模板的所有计划。","When deleting a user，delete all templates created before the user and all plans to use those templates."
+
+"业务信息插入失败！","Business information insertion failed!"
+"邮件发送信息插入失败！","Email sending message insert failed!"
+"添加计划","Add plan"
+"删除计划","Delete plan"
+"删除用户后清空用户所创建的所有计划。","Clear all plans created by the user after deleting the user."
+
+"暂无数据","No data"
+"还没有用于统计的数据","There are no statistics available"
+"暂无数据！","No data!"
+"图片","image"
+
+"目 录","Orders to record"
+"华文中宋","HuaWenZhongSong"
+"楷体","Kaiti"
+"第","The "
+"部分"," part"
+"黑体","Heiti"
+
+"用户背景色","User background color"
+"用户地址库开关","User address library switch"
+"用户刷新粒度","User refresh granularity"
+"主驾驶舱默认配置"," Main Dashboard configuration by default"
+"主驾驶舱引导","Main cockpit guidance"
+"报表计划引导","Report planning boot"
+"监控对象设置引导","Monitor object Settings for boot"
+                  
+"名称","Name"
+"告警总数","Alarm count"
+"流量告警","Traffic alarm"
+"会话告警","Session alram"
+"服务质量告警","Service alarm"
+                  
+"星期日","Sunday"
+"星期一","Monday"
+"星期二","Tuesday"
+"星期三","Wednesday"
+"星期四","Thursday"
+"星期五","Friday"
+"星期六","Saturday"
+
+"告警数量","Alarm Count"
+"最大会话数量","Max Session"
+"服务质量","Access Quality"
+"网络丢包率","Packet Loss"
+"下行带宽","Downstream Bandwidth Usage"
+
+"观察点常用KPI统计列表","Watchpoint common KPI statistics"
+"服务端常用KPI统计列表","Server common KPI statistics"
+"客户端常用KPI统计列表","Client common KPI statistics"
+
+"观察点常用KPI统计列表：","List of common KPI statistics of Watchpoint:"
+"服务端常用KPI统计列表：","List of common KPI statistics of Server:"
+"客户端常用KPI统计列表：","List of common KPI statistics of Client:"
+
+"\[注：\]","\[Note：\]"
+"环比","Relative"
+
+"带宽占用率","Bandwidth usage"
+
+"修改失败！系统模板不允许修改！","Can not Modify System template!"
+

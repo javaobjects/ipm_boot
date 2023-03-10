@@ -1,0 +1,113 @@
+<!--[if IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+        <script type="text/javascript" src="../res/resource/js/plugins/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ext-all.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ux/PagingMemoryProxy.js"></script>
+        <link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/ux/css/ux-all.css" />
+		<link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/resources/css/ext-all.css"/>
+		<link rel="stylesheet" type="text/css" href="../iDiggers/iDigger.css"/>
+		
+      
+        <script type="text/javascript">
+        window.onload = function() { 
+        	//左边功能树  
+        	    var menuTree = new Ext.tree.TreePanel({  
+        	        region:'west',  
+        	        width:130,  
+					style:'background-color: #eee;',
+        	        minSize:150,  
+        	        maxSize:200,  
+        	        autoScroll:true,  
+        	        autoHeight:false,  
+        	        rootVisible:false,
+        	        root:new Ext.tree.AsyncTreeNode({  
+        	            id:'root',    
+        	            draggable:false,  
+        	            expanded:true,
+        	            children: [{
+        	        		 text: 'is present',
+        	        		 leaf: true
+        	        		 }, {
+        	        		 text: '==',
+        	        		 leaf: true
+        	        		 }, {
+        	        		 text: '!=',
+        	        		 leaf: true
+        	        		 }, {
+        	            	 text: '>',
+        	            	 leaf: true
+        	            	 }, {
+        	                 text: '<',
+        	                 leaf: true
+        	                 }, {
+        	                 text: '>=',
+        	                 leaf: true
+        	                 }, {
+        	                 text: '<=',
+        	                 leaf: true
+        	                 }, {
+        	                 text: 'contains',
+        	                 leaf: true
+        	                 }, {
+        	                 text: 'matches',
+        	                 leaf: true
+        	                 }]
+        	        		 }),
+        	        		 rootVisible: false,
+        	        		 listeners: {
+        	        		 click: function(n) {
+        	        			 symbol = n.attributes.text;
+        	        			 Ext.getCmp('form').setDisabled(false) ;
+        	        	    
+        	        		 }
+        	        	 }
+        	        });
+        	          
+        	     var form = new Ext.form.FormPanel({
+        	    	id:"form",
+        	        labelWidth: 130,
+        	        disabled :true,
+        	        style:'background-color: #eeeeee;border:1px solid #eee;',
+        	        labelPad: 10,
+        	        defaultType: 'textfield',
+        	        layoutConfig: {
+        	            // 这里是布局配置项 layout-specific configs go here
+        	            labelSeparator: ''
+        	        },
+        	        items: [{
+        	                fieldLabel: 'Value (protocol):',
+        	                id:'first',
+        	                name: 'first',
+        	            },{
+        	                fieldLabel: 'Range (offset:length):',
+        	                id:'company',
+        	                name: 'company',
+        	            }
+        	        ]
+        	    }); 
+
+        	//右边具体功能面板区  
+        	var contentPanel = new Ext.TabPanel({  
+        	    region:'center',  
+				 style:'background-color: #eeeeee;',
+        	    items:form
+        	});  
+        	    new Ext.Viewport({  
+        	        layout:'border', //使用border布局  
+        	        defaults:{activeItem:0},  
+        	        items:[menuTree, contentPanel]  
+        	    });  
+        	};  
+        </script>
+ 
+</head>
+ 
+<body>
+</body>
+</html>

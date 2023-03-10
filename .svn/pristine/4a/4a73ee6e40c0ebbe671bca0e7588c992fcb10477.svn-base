@@ -1,0 +1,75 @@
+<!--[if IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+        <script type="text/javascript" src="../res/resource/js/plugins/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ext-all.js"></script>
+		
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ux/PagingMemoryProxy.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ux/RowEditor.js"></script>
+        <link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/ux/css/ux-all.css" />
+		<link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/resources/css/ext-all.css"/>
+
+       
+ <script type="text/javascript">
+ window.onload = function() { 
+	 function jsontTree(data, parent) {
+		 var arr=[];
+         var simgle = null;
+         //解析
+         for(var key in data) {
+             //有子节点
+             simgle = {};
+             if(typeof(data[key]) == "object") {
+            	 simgle.text=key;
+                 simgle.children = jsontTree(data[key], simgle);
+             } 
+             // 普通节点
+             else {
+            	 simgle.text=key+":"+data[key];
+				  simgle.leaf=true;
+             }
+             arr.push(simgle);
+         }
+         return arr;
+     }
+	 
+	 var loadMarsk = new Ext.LoadMask(document.body, {
+			msg : '数据加载中。。。。。。',
+			});
+			loadMarsk .show(); //显示
+
+	 $.ajax({
+			url:'/cgi-bin/iDigger.cgi?url=/io_phs',
+			method: "POST",
+			success:function(data) {
+			   TreeGrid = new Ext.tree.TreePanel({
+				    id: "root",
+	   		   		autoShow: true, 
+	   		        rootVisible: false, 
+	   		        style:"border:0px;",
+	   		        renderTo: Ext.getBody(),
+	   		        root: new Ext.tree.AsyncTreeNode({
+	   		        	id:'roots',
+		  			    expanded: true,
+		  			  	children:jsontTree(Ext.decode(data))
+		  			  
+	  		       })
+	            });
+			   TreeGrid.render();
+			   loadMarsk.hide();
+		}
+	});
+};  
+
+
+</script> 
+</head>
+
+<body>
+</body>
+</html>

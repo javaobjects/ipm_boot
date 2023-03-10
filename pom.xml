@@ -253,6 +253,13 @@
             <artifactId>syslog4j</artifactId>
             <version>0.9.46</version>
         </dependency>
+        <dependency>
+            <groupId>rrd-java-drive</groupId>
+            <artifactId>ptcsrrd</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+          <systemPath>D:\alibaba\ipm_boot\src\main\webapp\WEB-INF\lib\rrd-java-drive.jar</systemPath>
+        </dependency>
 	</dependencies>
 
 	<build>

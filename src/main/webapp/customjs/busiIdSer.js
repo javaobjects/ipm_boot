@@ -11,7 +11,7 @@ $(function () {
      *
      ===============================================================*/
     var defaultCockpit = {
-        /**
+        /**updateUserConfigureByKey
          * 获取页面名
          */
         pageName:location.pathname.split(".")[0].replace(/\//,""),
@@ -69,7 +69,7 @@ $(function () {
                         sortable: true
                     }
                 ],
-                ipm_title: "XPM服务器",
+                ipm_title: "观察点KPI",
                 ipm_shrink: true,
                 ipm_show: false,
                 ipm_column_save: true,
@@ -140,6 +140,7 @@ $(function () {
                                 field: data[i].columnen,
                                 title: data[i].columnzh,
                                 sortable: true,
+                                class: "textNowrap",
                                 visible: !!data[i].checked
                             });
                         }
@@ -601,7 +602,7 @@ $(function () {
                         sortable: true
                     }
                 ],
-                ipm_title: "XPM服务器",
+                ipm_title: "观察点KPI",
                 ipm_shrink: true,
                 ipm_show: false,
                 ipm_column_save: true,
@@ -753,6 +754,7 @@ $(function () {
                                 field: data[i].columnen,
                                 title: data[i].columnzh,
                                 sortable: true,
+                                class: "textNowrap",
                                 visible: !!data[i].checked
                             });
                         }
@@ -1316,6 +1318,7 @@ $(function () {
                                     field: data[i].columnen,
                                     title: data[i].columnzh,
                                     sortable: true,
+                                    class: "textNowrap",
                                     visible: !!data[i].checked
                                 });
                             }
@@ -1325,7 +1328,7 @@ $(function () {
                             }, {
                                 pageSize: 10,
                                 columns: csArr,
-                                ipm_title: "XPM服务器",
+                                ipm_title: "观察点KPI",
                                 ipm_shrink: true,
                                 ipm_column_save: true,
                                 rowStyle: function (row, i) {
@@ -1793,7 +1796,7 @@ $(function () {
                         sortable: true
                     }
                 ],
-                ipm_title: "XPM服务器",
+                ipm_title: "观察点KPI",
                 ipm_show: false,
                 ipm_shrink: true,
                 ipm_column_save: true,
@@ -1907,6 +1910,7 @@ $(function () {
                                 field: data[i].columnen,
                                 title: data[i].columnzh,
                                 sortable: true,
+                                class: "textNowrap",
                                 visible: !!data[i].checked
                             });
                         }
@@ -2431,7 +2435,7 @@ $(function () {
                         sortable: true
                     }
                 ],
-                ipm_title: "XPM服务器",
+                ipm_title: "观察点KPI",
                 ipm_shrink: true,
                 ipm_show: false,
                 ipm_column_save: true,
@@ -2547,6 +2551,7 @@ $(function () {
                                 field: data[i].columnen,
                                 title: data[i].columnzh,
                                 sortable: true,
+                                class: "textNowrap",
                                 visible: !!data[i].checked
                             });
                         }
@@ -3059,7 +3064,7 @@ $(function () {
                         sortable: true
                     }
                 ],
-                ipm_title: "XPM服务器",
+                ipm_title: "观察点KPI",
                 ipm_shrink: true,
                 ipm_show: false,
                 ipm_column_save: true,
@@ -3137,6 +3142,7 @@ $(function () {
                                 field: data[i].columnen,
                                 title: data[i].columnzh,
                                 sortable: true,
+                                class: "textNowrap",
                                 visible: !!data[i].checked
                             });
                         }
@@ -3739,6 +3745,7 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
@@ -3748,7 +3755,7 @@ $(function () {
                     }, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: tableId == "centerTable"?true:false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -4430,13 +4437,14 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
                     $.ptcsBSTable("centerTable", "", {}, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: tableId == "centerTable"?true:false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -4689,6 +4697,7 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
@@ -4698,7 +4707,7 @@ $(function () {
                     }, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -5027,13 +5036,14 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
                     $.ptcsBSTable("centerTable", "", {}, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -5225,6 +5235,7 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
@@ -5234,7 +5245,7 @@ $(function () {
                     }, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -5626,13 +5637,14 @@ $(function () {
                             field: data[i].columnen,
                             title: data[i].columnzh,
                             sortable: true,
+                            class: "textNowrap",
                             visible: !!data[i].checked
                         });
                     }
                     $.ptcsBSTable("centerTable", "", {}, {
                         pageSize: 10,
                         columns: columns,
-                        ipm_title: "XPM服务器",
+                        ipm_title: "观察点KPI",
                         ipm_show: false,
                         ipm_shrink: true,
                         ipm_column_save: true,
@@ -6017,7 +6029,7 @@ $(function () {
                 timer3 = setInterval(refreshTableData, refreTime),
                 fs_url = "/watchpointController/getCrossGridData.do",
                 fs_dblclickUrl = "/watchpointController/getWatchpointGraphical.do",
-                fs_plotIdsArray = [1,317,323,276],
+                fs_plotIdsArray = [1,317,9,323],
                 tabUrl = "watchpointController/getFindAll.do",
                 fs_plotIds = String(fs_plotIdsArray).replace("[","").replace("]","");
             //为右上角赋值时间
@@ -6214,7 +6226,7 @@ $(function () {
                                 moduleId = 10;
                                 fs_url = "/watchpointController/getCrossGridData.do";
                                 fs_dblclickUrl = "/watchpointController/getWatchpointGraphical.do";
-                                fs_plotIdsArray = [1,317,323,276];
+                                fs_plotIdsArray = [1,317,9,323];
                                 tabUrl = "watchpointController/getFindAll.do";
                                 fs_plotIds = String(fs_plotIdsArray).replace("[","").replace("]","");
                             }else {
@@ -6264,7 +6276,7 @@ $(function () {
                                     case "10"://WATCHPOINT
                                         fs_url = "/watchpointController/getCrossGridData.do";
                                         fs_dblclickUrl = "/watchpointController/getWatchpointGraphical.do";
-                                        fs_plotIdsArray = [1,317,323,276];
+                                        fs_plotIdsArray = [1,317,9,323];
                                         tabUrl = "watchpointController/getFindAll.do";
                                         fs_plotIds = String(fs_plotIdsArray).replace("[","").replace("]","");
                                         break;

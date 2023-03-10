@@ -1,0 +1,700 @@
+    Ext.onReady(function() {
+	var log=null;
+	 $.ajax({
+			url:'/cgi-bin/iDigger.cgi?url=/uflts',
+			method: "POST",
+			async: false,
+			success:function(r) {
+				 store1= new Ext.data.JsonStore({
+					 id:"pagerid",
+					 fields:['id','name'],
+					 data:Ext.decode(r)
+				  });
+		
+	    var  L1 = new Ext.FormPanel({
+	    	id:'form',
+	    	layout : 'column',
+	    	cls :'north',
+			border : false,
+			region : 'north',
+			items : [ {
+				name : 'isPledge',
+				xtype : 'hidden',
+				value : 0
+			},{
+				layout : 'form',
+				border : false,
+				labelWidth : 80,
+				style:"font:normal 14px SimHei ,tahoma,verdana,helvetica;",
+				labelAlign : 'right',
+				items : [ {
+					id:'myItem',
+					xtype:'combo',
+					mode : 'local',
+				    displayField : 'name',
+				    valueField : 'name',
+				    editable: true, 
+				    width:230,
+				    forceSelection: false,
+				    emptyText:'请选择',
+				    store : store1,
+				    columns: [
+					            {id:'no',header: "id", width: 180,  dataIndex: 'id'},                                                             
+					            {header: "name", width: 75,  dataIndex: 'name'}],
+					triggerAction : "all",
+					autoExpandColumn: 'no',
+					hiddenName:"customerType",
+					fieldLabel : '过滤器',
+					labelSeparator :''
+					} ]
+				},{
+				border : false,
+				labelAlign : 'right',
+				style:'margin-left:3%',
+				items : [new Ext.Button({
+					text : '查    询',
+					handler:function(){
+						 var  txtValue= Ext.getCmp('myItem').getValue();
+						 $.ajax({
+								url:'/cgi-bin/iDigger.cgi?url=/uflts/add@name~'+txtValue,
+								method: "POST",
+								success:function() {	
+						 $.ajax({
+								url:'/cgi-bin/iDigger.cgi?url=/set_dfilter@dflt~'+txtValue,
+								method: "POST",
+								success:function() {
+									window.parent.frames.gridPan.location.reload();
+								}
+						     });
+						   
+						     }
+						 });
+							Ext.getCmp('myItem').setValue(txtValue);
+			            }  ,
+						anchor:'100%',
+						AutoPostBack:true,
+						style:'margin-left:5px'
+					})]
+				}]
+		   });
+	  var   btnChangePwd = new Ext.ButtonGroup({
+	    	 //buttonAlign:'center',
+	    	 cls:'south',
+			 items: [{
+				 text:"返回搜索",
+				 style:'margin-right:50px;margin:0px 0px 0px 0xp;;text-align: center;',
+				 handler:function(){
+						var  txtValue= Ext.getCmp('myItem').setValue();
+						if(txtValue !=null){
+							txtValue="";
+						}
+						 $.ajax({
+								url:'/cgi-bin/iDigger.cgi?url=/set_dfilter@dflt~'+txtValue,
+								method: "POST",
+								success:function() {
+									window.parent.frames.gridPan.location.reload();
+								}
+						     });
+					}
+			 },{
+				 text:"概要整理",
+				 id:"aa",
+				 style:'margin-right:50px;margin:0px 0px 0px 0xp;;text-align: center;',
+				 handler:function(){
+					 Ext.getCmp("aa").addClass('back');
+		        	 var table=new Ext.TabPanel({
+		        		 height: 150,
+		        		 width: 300,
+		        		 activeTab: 0, // 默认激活第2个tab页
+		        		 renderTo: Ext.getBody(),
+		        		 items: [{
+		        			 title:'文件信息',
+		        			 html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="summary.html"></iframe>'
+		        		 },{
+		        			 title:'数据包长度',
+		        			 html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="summaryTo.html"></iframe>'
+		        		 },{
+		        			 title:'协议分布',
+		        			 html:'<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="summaryTree.html"></iframe>'
+		        		 }]
+		        	 });
+		        	  var win = new Ext.Window({
+		            	      title: "概要整理信息",	   //标题
+		            	      draggable: false,
+		            	      height: 650,						  //高度
+		            	      width: 900,						   //宽度
+		            	      layout: "fit",						//窗口布局类型
+		            	      modal: true, //是否模态窗口，默认为false
+		            	      resizable: true,
+		            	      constrainHeader:true,
+		            	      draggable :true,  //拖动
+		            	      items: [table]
+		            	    });
+		            	    win.show();
+		      }
+		     }, {
+		    	 //iconCls:'btn2',
+		    	 text:"会话统计",
+		    	 style:'margin-right:50px;margin:0px 0px 0px 0xp;;text-align: center;',
+		         handler:function(){ var store=null;
+	        	 var loadMarsk = new Ext.LoadMask(document.body, {
+		     			msg : '数据加载中。。。。。。',
+		     			store:store
+		     			});
+		     			loadMarsk .show(); //显示
+		        	 $.ajax({
+		        			url:'/cgi-bin/iDigger.cgi?url=/conv',
+		        			method: "POST",
+		        			success:function(r) {
+		        				 store = new Ext.data.Store({ 
+			        					reader:new Ext.data.JsonReader({
+			        						totalProperty: 'totalCount'
+			        					 },[ 
+			        	                           {name:'Address SRC'}, 
+			        	                           {name:'Filter-TCP'},
+			        	                           {name:'Filter-TCP-Stream'}, 
+			        	                           {name:'Port SRC',type:'int'},
+			        	                           {name:'Address DST'},
+			        	                           {name:'Port DST',type:'int'},
+			        	                           {name:'Total Packets',type:'int'},
+			        	                           {name:'Total Bytes',type:'int'},
+			        	                           {name:'Packets SRC -> DST',type:'int'}, 
+			        	                           {name:'Packets DST -> SRC',type:'int'},
+			        	                           {name:'Bytes SRC -> DST',type:'int'},
+			        	                           {name:'Bytes DST -> SRC',type:'int'},
+			        	                           {name:'Rel Start',type:'float'},
+			        	                           {name:'Duration',type:'float'}
+			        	                           ]),	
+			        	                           remoteSort: true
+			        	                       
+			        			    }); 
+			        				var obj= Ext.decode(r);//obj储存响应的数据 
+			        				store.proxy = new Ext.data.PagingMemoryProxy(obj);//PagingMemoryProxy() 一次性读取数据 
+			        				store.load({params:{start:0,limit:15}});//按5条记录分布 
+			        				loadMarsk .hide();
+		        				var grid = new Ext.grid.GridPanel({
+		        			        store: store,
+		        			        id:"grid",
+		        			        viewConfig : {
+		        			        	sortAscText: '升序',
+		        			            sortDescText: '降序',
+					  	  		        forceFit : true //让grid的列自动填满grid的整个宽度，不用一列一列的设定宽度。
+					  	  		        },
+		        			        renderTo: Ext.getBody(),
+		        			        columns: [
+		        			            {id:"no",header: "Address SRC", width: 85,  sortable: true, dataIndex: 'Address SRC'},
+		        			            {header: "Port SRC", width: 75,  sortable: true, dataIndex: 'Port SRC'},
+		        			            {header: "Address DST", width: 110,  sortable: true, dataIndex: 'Address DST'},
+		        			            {header: "Port DST", width: 75,  sortable: true, dataIndex: 'Port DST'},
+		        			            {header: "Total Packets", width: 75,  sortable: true, dataIndex: 'Total Packets'},
+		        			            {header: "Total Bytes", width: 85,  sortable: true, dataIndex: 'Total Bytes'},
+		        			            {header: "Packets SRC -> DST", width: 120,  sortable: true, dataIndex: 'Packets SRC -> DST'}, 
+		        			            {header: "Bytes SRC -> DST", width: 125,  sortable: true, dataIndex: 'Bytes SRC -> DST'},
+		        			            {header: "Packets DST -> SRC",defaultSortable:true, width: 105,  sortable: true, dataIndex: 'Packets DST -> SRC'},
+		        			            {header: "Bytes DST -> SRC", width: 105,  sortable: true, dataIndex: 'Bytes DST -> SRC'},
+		        			            {header: "Duration", width: 85,  sortable: true, dataIndex: 'Duration'},      
+		        			            {header: "Rel Start", width: 75,  sortable: true, dataIndex: 'Rel Start'}   
+		        			        ],
+		        			        loadMask:"正在加载..",
+		        			        stripeRows: true,
+		        			        autoExpandColumn: 'no',
+		        			        height:320,
+		        			        width:1200,
+		        			        bbar: new Ext.PagingToolbar({
+		        		        	    pageSize: 15,
+		        	                    store: store,
+		        	                    displayInfo: true,
+		        	                    displayMsg: '显示{0}-{1}条，共{2}条',
+		        	                    emptyMsg: "没有数据"
+		        	               }),
+		        			        listeners: {  
+		        				  		  'rowdblclick': function(grid,rowIndex,columnIndex,e ){
+		        					  		     var rs=grid.getSelectionModel().getSelected();
+		        					  		     var no=rs.get("Filter-TCP-Stream");
+		        					  		   var loadMarsk = new Ext.LoadMask(document.body, {
+		        					     			msg : '数据加载中。。。。。。'
+		        					     			});
+		        					     			loadMarsk .show(); //显示
+		        					  		   $.ajax({  
+		        					  	            url: '/cgi-bin/iDigger.cgi?url=/follow_tcp_stream@tcp_stream_flt~'+no,
+		        					  	            method: "POST",  
+		        					  	            success: function(date){
+	                                                  var win = new Ext.Window({
+	                    		  	            	      title: "会话信息码流",	   //标题
+	                    		  	            	      draggable: false,
+	                    		  	            	      height:500,						  //高度
+	                    		  	            	      width: '60%',						   //宽度
+	                    		  	            	      autoScroll : true,		    //窗口布局类型
+	                    		  	            	      modal: true, //是否模态窗口，默认为false
+	                    		  	            	      resizable: true,
+	                    		  	            	      constrainHeader:true,
+	                    		  	            	      draggable :true,  //拖动
+	                    		  	            	      html:"<div style='word-wrap:break-word;'>"+date+"<div>"
+	                    		  	            	    });
+	                    		  	            	    win.show();
+	                    		  	            	    loadMarsk .hide();
+		        			              }
+		        					    });
+		        					   }
+					  	  		     }					  	  		
+		        			    });
+		        				 var win = new Ext.Window({
+			  	            	      title: "会话统计信息",	   //标题
+			  	            	      draggable: false,
+			  	            	      height: 600,						  //高度
+			  	            	      width:'95%',						   //宽度
+			  	            	      layout: "fit",						//窗口布局类型
+			  	            	      modal: true, //是否模态窗口，默认为false
+			  	            	      resizable: true,
+			  	            	      constrainHeader:true,
+			  	            	      draggable :true,  //拖动
+			  	            	      items: [grid],
+			  	            	        buttons: [{
+										text: "过滤会话",
+										//sstyle:' padding:5px 0px 0px 0px;',
+										handler: function() {
+											 var rs=grid.getSelectionModel().getSelected();
+								  		     var no=rs.get("Filter-TCP");
+								  		     var newRecord = new Ext.data.Record({id: no, name: no});  
+								  		     store1.add(newRecord);
+								  		     Ext.getCmp("myItem").setValue(no);
+								  		     win.close();
+								  		      var  txtValue= Ext.getCmp('myItem').getValue();
+						 $.ajax({
+								url:'/cgi-bin/iDigger.cgi?url=/uflts/add@name~'+txtValue,
+								method: "POST",
+								success:function() {	
+						 $.ajax({
+								url:'/cgi-bin/iDigger.cgi?url=/set_dfilter@dflt~'+txtValue,
+								method: "POST",
+								success:function() {
+									window.parent.frames.gridPan.location.reload();
+								}
+						     });
+						   
+						     }
+						 });
+							Ext.getCmp('myItem').setValue(txtValue);
+										}}]
+			  	            	    });
+			  	            	    win.show();
+		    		 }
+		           });
+		         }
+		     }, {
+		    	 text:"专家分析",
+		    	 style:'margin-right:50px;margin:15px 0px 0px 0xp;text-align: center;',
+		    	 handler:function(){
+		    		 $.ajax({
+		    				url:'/cgi-bin/iDigger.cgi?url=/expertinfo',
+		    				method: "POST",
+		    				success:function(r) {
+		    					var content = new Ext.TabPanel({  
+		    						id:"myCon",
+		    					    enableTabScroll:true,  
+		    					    activeTab:0,
+		    					    items:[{   
+		    					        title:'Errors',  
+		    					        autoScroll:true,
+		    					        html:'<iframe id="gridPan"  scrolling="no" frameborder="0" width="100%" height="100%" src="expert/errors.html"></iframe>'
+		    					    },{
+		    					    	 title:'Warnings',
+		    					    	 html:'<iframe scrolling="no" frameborder="0" width="100%" height="100%" src="expert/warnings.html"></iframe>'
+		    					    }
+		    					    ,{
+		    					    	 title:'Notes',
+		    					    	 html:'<iframe scrolling="no" frameborder="0" width="100%" height="100%" src="expert/notes.html"></iframe>'
+		    					    }
+		    					    ,{
+		    					    	 title:'Chats',
+		    					    	 autoScroll :false,
+		    					    	 html:'<iframe scrolling="no" frameborder="0" width="100%" height="100%" src="expert/chats.html"></iframe>'
+		    					    }]
+		    					});  
+		    					 var win = new Ext.Window({
+			  	            	      title: "专家分析信息",	   //标题
+			  	            	      height: 500,						  //高度
+			  	            	      width: 900,						   //宽度
+			  	            	      layout: "fit",						//窗口布局类型
+			  	            	      modal: true, //是否模态窗口，默认为false
+			  	            	      resizable: true,
+			  	            	      monitorResize :true,
+			  	            	      constrain:true,
+			  	            	      constrainHeader:true,
+			  	            	      draggable :true,  //拖动
+			  	            	      items: [content]
+			  	            	    });
+			  	            	    win.show();
+		    				}
+		    	 });
+		    	}
+		     }, {
+		    	 text: '安全信息',
+		    	 style:'margin-right:50px;margin:15px 0px 0px 0xp;text-align: center;',
+		    	 handler:function(){
+		    		 var win = new Ext.Window({
+ 	            	      title: "安全分析信息",	   //标题
+ 	            	      draggable: false,
+ 	            	      height: 400,						  //高度
+ 	            	      width: 400,						   //宽度
+ 	            	      layout: "fit",						//窗口布局类型
+ 	            	      modal: true, //是否模态窗口，默认为false
+ 	            	      constrainHeader:true,
+ 	            	      draggable :true,  //拖动
+ 	            	      items:[{
+ 	            	       html:'<div style="padding-top:160px;text-align:center;">安全分析特征库2020-7-2</div>'
+ 	            	      }],
+ 	            	      resizable: true
+ 	            	    });
+ 	            	    win.show();
+ 	            	   
+		    		 }
+		     },{
+		    	    text : '表 达 式',
+		    	    style:'margin-right:50px;margin:0px 0px 0px 0xp;text-align: center;',
+					handler:function(){	
+							var westPanel = new Ext.Panel({ 
+							 id:"xId",
+							 title:'Field name', 
+							 region:'west',    
+							 width:300,    
+							 split: false,//添加分割线是否可以改变该panel的大小    
+							 minSize: 40,//设置拖动的最小拖动值    
+							 maxSize: 100,//设置拖动的最大拖动值   
+							 html:'<iframe id="expression" style="border:1px solid #0a8372;" name="expression"  frameborder="0" width="100%" height="100%" src="expression.html"></iframe>'  
+					});    
+							var centerPanel = new Ext.Panel({     
+							title:'Relation',    
+							region:'center', 
+							html:'<iframe id="symbol" style="border:1px solid #0a8372;" name="symbol" frameborder="0" width="100%" height="100%" src="expressionTo.html"></iframe>'    
+					 });
+					  var mainPanel = new Ext.Panel({ 
+						  layout:'border',   
+						  border:true,    
+						  items:[westPanel,centerPanel] 
+					  }); 
+					  var winShow = new Ext.Window({
+	            	      title: "表达式信息",	   //标题
+	            	      height: 600,	
+	            	      id:"winShowId" ,//高度
+	            	      width: 850,						   //宽度
+	            	      layout: "fit",						//窗口布局类型
+	            	      modal: true, //是否模态窗口，默认为false
+	            	      resizable: false,
+	            	      draggable :true,  //拖动
+	            	      constrainHeader:true,
+	            	      items: [mainPanel],
+	            	      listeners:{
+			  	               resize:function(){
+			  	                   if(window.expression){
+			  	                   	var ww = Ext.getCmp("winShowId").getHeight();
+			  	                    window.expression.Ext.getCmp("root").setHeight(ww);}
+			  	             }
+			  	          },
+	            	      buttons: [{
+	            	      	style:' padding:5px 0px 0px 0px;',
+	            	      	text : '确 定',
+								handler:function(){
+									var  expre=window.expression.treeNode;
+									var  symbol =  window.symbol.symbol;
+									if(typeof(symbol)=='undefined'){
+										symbol="";
+									}
+									var  company=window.symbol.Ext.getCmp("company").getValue();
+									var  first=window.symbol.Ext.getCmp("first").getValue();
+									var  str=expre+symbol+first+company;
+									
+									var re = new Ext.data.Record({
+										name: str,
+										id: str
+									});
+									store1.add(re);
+									Ext.getCmp("myItem").setValue(str);
+									winShow.close();
+									
+								}
+								},{
+									text : '取 消',
+									style:' padding:5px 0px 0px 0px;',
+									handler:function(){
+										winShow.close();
+									}
+	            	      }]
+	            	    });
+	            	    winShow.show();
+					}
+		     }]
+		 }); 
+	  var north=new Ext.Panel({  
+			region : "north",
+	        height : 60,
+	        html:'<div style="margin-top:-80px; height:70px; background-color: #eeeeee;"><img src="../iDiggers/img/11.jpg" style="padding-top:15px;padding-left:10px;width:16%;" /></div>',
+	        items:L1
+		});  
+	var center=new Ext.Panel({  
+		 region : "center",
+		 items:btnChangePwd,
+         html:'<iframe scrolling="auto" id="gridPan" name="gridPan" style="border:1px solid #cccccc;" width="100%" height="95%" src="iDiggerTo.html" ></iframe>'
+	});  
+	/*var south=new Ext.Panel({
+	region: 'south',
+    html: '<div  style="text-align: center;top:0px;font-size: 10px;background-color:#0a8372;">北京协软科技有限公司</div>'
+	});*/
+	  new Ext.Viewport({  
+	        layout:'border', //使用border布局  
+	        items:[north,center]
+	    });  		   
+	
+
+    }
+  });
+Ext.data.Store.prototype.applySort = function() {
+		    if (this.sortInfo && !this.remoteSort) {
+		        var s = this.sortInfo, f = s.field;
+		        var st = this.fields.get(f).sortType;
+		        var fn = function(r1, r2) {         
+		            var v1 = st(r1.data[f]), v2 = st(r2.data[f]);  
+		            var num1,num2;          
+		            if (typeof(v1) == "string") { 
+		               if(v1=='' && v2!='') return -1;
+		               if(v1 !='' && v2=='') return 1;
+		               if(v1=='' && v2=='') return 0;  
+		                      num1=parseFloat(v1.replace(/-/g,''));
+		                      num2=parseFloat(v2.replace(/-/g,''));
+		                      if(isNaN(num1)) {num1=v1;}
+		                      if(isNaN(num2)) num2=v2;
+		                }
+		                else
+		                  return v1.localeCompare(v2);   
+		            //}
+		              return num1 > num2 ? 1 : (num1 < num2 ? -1 : 0);
+		        };       
+		        this.data.sort(s.direction, fn);
+		        if(this.snapshot && this.snapshot != this.data) {
+		            this.snapshot.sort(s.direction, fn);
+		        }
+		    }
+		};
+		
+});
+//解析数据   
+function jsontTree(data) {
+		var jsonArr = [];
+		var jsonNode = null;
+		var jsonNodeTwo = null;
+		for(var key in data) {
+			jsonNode = {};
+			jsonNode.id = key;
+			jsonNode.text = key;
+			jsonNode.children = [];
+			if(typeof(data[key]) === 'object') 
+				for(var nodeKey in data[key]) {
+					jsonNodeTwo = {};
+					jsonNodeTwo.id = nodeKey;
+					jsonNodeTwo.text = nodeKey+": "+data[key][nodeKey];
+					
+					if(jsonNodeTwo.text.length>50){
+						var str=jsonNodeTwo.text;
+						var a =str.substr(0,30)+"......";
+						jsonNodeTwo.text=a;
+					}
+					
+					jsonNodeTwo.leaf=true;
+					jsonNodeTwo.children = [];
+					jsonNode.children.push(jsonNodeTwo);
+				}
+			else {
+				jsonNodeTwo = {};
+				jsonNodeTwo.text = data[key];
+				jsonNode.children.push(jsonNodeTwo);
+			}
+			
+			jsonArr.push(jsonNode);
+		}
+		
+		return jsonArr;
+		
+	}
+//解析数据
+function jsonTrees(data) {
+	var jsonArr = [];
+	var jsonNode = null;
+	var jsonNodeTwo = null;
+	for(var key in data) {
+		jsonNode = {};
+		jsonNode.id = key;
+		jsonNode.text = key;
+		jsonNode.children = [];
+		if(typeof(data[key]) === 'object') {
+				for(var nodeKey in data[key]) {
+					jsonNodeTwo = {};
+					jsonNodeTwo.id = nodeKey;
+					if(jsonNodeTwo.id=="data"){
+						jsonNodeTwo.text = nodeKey+":"+ stringHex(data[key][nodeKey]);
+						jsonNodeTwo.leaf=true;
+						jsonNodeTwo.children = [];
+						jsonNode.children.push(jsonNodeTwo);
+					}else if(jsonNodeTwo.id=="data.data"){
+					    jsonNodeTwo.text = nodeKey+":"+ strinTogHex(data[key][nodeKey]);
+						jsonNodeTwo.leaf=true;
+						jsonNodeTwo.children = [];
+						jsonNode.children.push(jsonNodeTwo);
+					}else{
+						if(data[key][nodeKey].length>15){
+							jsonNodeTwo.text = nodeKey+":"+data[key][nodeKey];
+							jsonNodeTwo.leaf=true;
+							jsonNodeTwo.children = [];
+							jsonNode.children.push(jsonNodeTwo);
+						}else{
+							jsonNodeTwo.text = nodeKey+":"+data[key][nodeKey];
+							jsonNodeTwo.leaf=true;
+							jsonNodeTwo.children = [];
+							jsonNode.children.push(jsonNodeTwo);
+						}
+					}
+				}
+		}else {
+			jsonNodeTwo = {};
+			jsonNodeTwo.text = data[key];
+			jsonNode.children.push(jsonNodeTwo);
+		}
+		
+		jsonArr.push(jsonNode);
+	}
+	
+	return jsonArr;
+	
+}
+//十六进制转换
+function stringHex(s){
+  	  var StrHex="";
+  	  for (var i=0; i < s.length ; i = i + 2 ){
+  		  var str = s.substr(i, 2); 
+  		  var n = parseInt(str, 16);//16进制；
+  		  var temp="";
+  		  if(n>126 || n<33 || n == 60 || n == 62){
+  			  temp=".";
+  		  }else{
+  			  temp=String.fromCharCode(n);
+  		  }
+            StrHex = StrHex + temp;
+  	  }
+       return StrHex;
+ }
+//十六进制转换
+function strinTogHex(s){
+		      var StrHexTo="";
+              var str =s.split(":");		  	  
+		  	 if(str.length>2){
+              for (var i=0; i < str.length ; i++ ){
+		  		  var n = parseInt(str[i], 16);//16进制；
+		  		  var temp="";
+		  		  if(n>126 || n<33 || n == 60 || n == 62){
+		  			  temp=".";
+		  		  }else{
+		  			  temp=String.fromCharCode(n);
+		  		  }
+		            StrHexTo = StrHexTo + temp;
+		  	      }
+              }else{
+            	  StrHexTo=s;
+		  	  }
+		       return StrHexTo;
+		 }   
+	
+	
+function  log(open){	 
+	var colorRedId = null;
+	TreeGrid = new Ext.tree.TreePanel({
+				  	autoShow: true, 
+				  	id:"treeId",
+					rootVisible: false, 
+					style:'border:1px solid #0a8372;',
+					autoScroll: true,
+					width: 350,
+					height:568,
+					root: new Ext.tree.AsyncTreeNode({
+							id: "root",
+							expanded: true,
+							children: jsontTree(Ext.decode(open))
+						  	}),
+					listeners:{  
+					  'click':function(node){
+							var test=jsonTrees(Ext.decode(open));
+						  	var jsonArr = [];
+						     for(var key=0; key<test.length;key++){
+						    	 if(test[key].text==node.id){
+						    		 var val=node.id +"\n";
+						    		 var str = test[key].children;
+						    		 for(var i=0;i<str.length;i++){
+						    			 var strVal= str[i].text;
+						    			 jsonArr.push("<pre id='" + str[i].id + "'>");
+						    			 if(strVal.length > 95){
+						    				 var s = ""; 
+						    				 for(var ii = 0; ii < strVal.length;ii += 95){
+						    					 s = s + strVal.substr(ii,95) + "<br/>";
+						    				 }
+						    				 strVal = s;
+						    			 }
+						    			 jsonArr.push(strVal); 
+						    			 jsonArr.push("</pre><br/>");
+						    		 } 
+						    		  var  value= val +  jsonArr.join("");
+								  	  document.getElementById("test").innerHTML=value;
+						    	    }else if(test[key].text == node.parentNode.id){
+						    	      if(node.attributes.id == node.attributes.id ){
+						    	    	  if(colorRedId && document.getElementById(colorRedId)) {
+						    	    		  document.getElementById(colorRedId).style.color = "black";
+						    	    	  }
+						    	    	  colorRedId = node.attributes.id;
+						    	    	  document.getElementById(colorRedId).style.color = "#0a8372";
+						    	    	  break;
+						    	      }
+						    	    	
+						    	    }
+						         }
+					          }  
+						  	}
+					  	 });
+	 var aa=new Ext.Panel({ 
+		 region: "west", 
+		 width:350, 
+		 style:'background-color:#ecf0f1;',
+		 autoScroll: true,
+		 collapsible: true ,
+		 items:TreeGrid
+	 });
+	 var dd=new Ext.Panel({ 
+		 region: "center", 
+		 split: true, border: true, 
+		 collapsible: true,
+		 items:[{html:'<div id="test" ' +
+       		'style="height:580px;' +
+       		'width:990px;' +
+       		'overflow:scroll;'+
+       		'margin-left: 25px;line-height:15px;"></div>'
+       		}]
+	 });
+	 
+	
+    var mainPanel11 = new Ext.Panel({ 
+		  layout:'border',   
+		  border:true,    
+		  items:[aa,dd] 
+	  }); 
+	
+	 var sWin = new Ext.Window({
+			  	    title: "数据包信息",	  
+			  	    height: 600,						 
+			  	    width: 1000,						 
+			  	    layout: "fit",						
+			  	    modal: true, 
+	                resizable: false,
+	            	draggable :true,
+	            	constrainHeader:true,
+			  	    items:mainPanel11
+			  	    });
+			  	    sWin.show();
+			  	   
+		
+		}

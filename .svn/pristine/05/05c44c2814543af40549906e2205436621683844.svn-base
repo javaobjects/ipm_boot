@@ -1,0 +1,76 @@
+<!--[if IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+        <script type="text/javascript" src="../res/resource/js/plugins/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ext-all.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ux/PagingMemoryProxy.js"></script>
+        <link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/ux/css/ux-all.css" />
+		<link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/resources/css/ext-all.css"/>
+
+        
+ <script type="text/javascript">
+ var store=null;
+ window.onload = function() { 
+     var loadMarsk = new Ext.LoadMask(document.body, {
+			msg : '数据加载中。。。。。。',
+			store:store
+			});
+			loadMarsk .show(); //显示
+	 $.ajax({  
+           url: "/cgi-bin/iDigger.cgi?url=/capinfo",
+           method: "POST",  
+           success : function(r) {
+	             var  obj=eval('('+r+')');
+           	var jsonArr = [];
+           	var simpleJson = null;
+	  	         for(var jsonStr in obj) {
+	  	        	 simpleJson = {};
+	  	        	 simpleJson.key = jsonStr;
+	  	        	 simpleJson.value = obj[jsonStr];
+	  	        	 jsonArr.push(simpleJson);
+	  	      }  
+	  	       store = new Ext.data.JsonStore({
+	  				fields:['key','value'],
+	  				data:jsonArr
+	  		    });	
+				loadMarsk .hide(); 
+					var orgGrid=Ext.get("orgGrid");  //展示grid的容器
+	  	     var grid = new Ext.grid.GridPanel({
+	  		        store: store,
+	  		        id:"grid",
+	  		    viewConfig : {
+	  		        forceFit : true //让grid的列自动填满grid的整个宽度，不用一列一列的设定宽度。
+	  		        },
+	  		        renderTo: Ext.getBody(),
+	  		        columns: [
+	  		            {id:'no', header: "统计项",dataIndex: 'key'},
+			            {header: "信息",  dataIndex: 'value'}
+	  		        ],
+	  		        loadMask:"正在加载..",
+	  		        stripeRows: true,
+	  		        autoExpandColumn: 'no',
+	  		        width:orgGrid.getComputedWidth(),
+                    height:document.documentElement.clientHeight,
+	  	  		    });
+	  	            grid.render(orgGrid);  //把grid铺到id为grid的容器中
+					window.onresize=function(){
+								grid.setWidth(0);
+								grid.setWidth(orgGrid.getComputedWidth());
+						};
+	 
+    }
+  });	
+};  
+
+</script> 
+</head>
+
+<body>
+<div id="orgGrid"></div>
+</body>
+</html>

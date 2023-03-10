@@ -334,11 +334,11 @@
                                                     dataType:"json",
                                                     success:function (data,textStatus,XMLHttpRequest) {
                                                         if(!data){
-                                                            jeBox.alert("保存失败,请稍后再试");
+                                                            jeBox.alert("保存失败，请稍后再试");
                                                         }
                                                     },
                                                     error:function (XMLHttpRequest,textStatus,errorThrown) {
-                                                        jeBox.alert("保存失败,请稍后再试");
+                                                        jeBox.alert("保存失败，请稍后再试");
                                                         console.error(XMLHttpRequest);
                                                         console.error(textStatus);
                                                         console.error(errorThrown);
@@ -1057,8 +1057,8 @@
             url:"/jtopo/getAllCommpair.do",
             method:"POST",
             data:{
-                startTime:$.timeStampDate($("#inpstart").val()),
-                endTime: $.timeStampDate($("#inpend").val()),
+                startTime:!!$("#inpstart").val()?$.timeStampDate($("#inpstart").val()):undefined,
+                endTime: !!$("#inpend").val()?$.timeStampDate($("#inpend").val()):undefined,
                 granularity:$("#timelidu").children("option:selected").val(),//力度
                 watchpointId:$("#watchpoint").children("option:selected").val() &&
                 $("#watchpoint").children("option:selected").val() != 0?

@@ -1,0 +1,33 @@
+// 请求URL: http://192.168.1.72/plist
+[
+    {
+        'Info': 'Standardqueryresponse0x0001PTRdns.example.com',
+        'No.': '2',
+        'Protocol': 'DNS',
+        'No': '2',
+        'Destination': '172.16.253.5',
+        'Source': '172.16.253.20',
+        'Length': '115',
+        'Time': '0.002683'
+    },
+    {
+        'Info': 'Standardquery0x0002Agithub.com',
+        'No.': '3',
+        'Protocol': 'DNS',
+        'No': '3',
+        'Destination': '172.16.253.20',
+        'Source': '172.16.253.5',
+        'Length': '70',
+        'Time': '0.004737'
+    },
+    {
+        'Info': 'Standardqueryresponse0x0002A192.30.252.131',
+        'No.': '4',
+        'Protocol': 'DNS',
+        'No': '4',
+        'Destination': '172.16.253.5',
+        'Source': '172.16.253.20',
+        'Length': '86',
+        'Time': '0.03108'
+    }
+]

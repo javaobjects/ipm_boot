@@ -1,0 +1,19 @@
+// 请求URL: http://192.168.1.72/uflts
+[
+    {
+        'id': 1,
+        'name': u'http'
+    },
+    {
+        'id': 2,
+        'name': u'tcp'
+    },
+    {
+        'id': 3,
+        'name': u'tcp.flags.fin==1'
+    },
+    {
+        'id': 4,
+        'name': u'345'
+    }
+]

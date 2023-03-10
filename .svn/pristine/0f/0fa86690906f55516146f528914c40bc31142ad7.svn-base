@@ -1,0 +1,77 @@
+// 请求URL: http://192.168.1.72/expertinfo
+{
+    'Chats': [
+        {
+            'Protocol': 'TCP',
+            'Frequency': '162',
+            'Group': 'Sequence',
+            'Summary': 'Connectionfinish(FIN)'
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '66',
+            'Group': 'Sequence',
+            'Summary': 'Connectionestablishrequest(SYN): serverport443'
+        },
+        {
+            'Protocol': 'HTTP',
+            'Frequency': '1',
+            'Group': 'Sequence',
+            'Summary': 'GET/payment/payDetailLazy.action?payResultDetailInfoJson=8c2dc8ed0c0ec931b2f1f1112438584aec9f31f65ac9e71ac1844131e6661ad795c54be07d679dc2b81a9a1744a454af16acc7fedab5899b79df4848a4c59d8ead5d1b5e96344fd48be84ca5ec8f409f2aca5598124a05b798ef8'
+        }
+    ],
+    'Warns': [
+        {
+            'Protocol': 'TCP',
+            'Frequency': '30',
+            'Group': 'Sequence',
+            'Summary': "ACKed segment that wasn't captured (common at capture start)"
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '127',
+            'Group': 'Sequence',
+            'Summary': 'Previoussegmentnotcaptured(commonatcapturestart)'
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '15',
+            'Group': 'Sequence',
+            'Summary': 'Connectionreset(RST)'
+        }
+    ],
+    'Errors': [
+        {
+            'Protocol': 'SSL',
+            'Frequency': '1',
+            'Group': 'Malformed',
+            'Summary': 'MalformedPacket(Exceptionoccurred)'
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '3',
+            'Group': 'Malformed',
+            'Summary': 'Newfragmentoverlapsolddata(retransmission?)'
+        }
+    ],
+    'Notes': [
+        {
+            'Protocol': 'TCP',
+            'Frequency': '58',
+            'Group': 'Sequence',
+            'Summary': 'Thisframeisa(suspected)retransmission'
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '1',
+            'Group': 'Sequence',
+            'Summary': 'DuplicateACK(#26)'
+        },
+        {
+            'Protocol': 'TCP',
+            'Frequency': '1',
+            'Group': 'Sequence',
+            'Summary': 'DuplicateACK(#27)'
+        }
+    ]
+}

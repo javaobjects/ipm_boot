@@ -16,7 +16,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <!-- 为了避免发布时出错，请在本地项目中修改数据库IP -->
-        <property name="url" value="jdbc:mysql://210.12.150.194:20336/ipm?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="url" value="jdbc:mysql://xpm.51alert.cn:3306/ipm?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
         <property name="username" value="root" />
         <property name="password" value="123456" />
         <property name="defaultAutoCommit" value="true" />

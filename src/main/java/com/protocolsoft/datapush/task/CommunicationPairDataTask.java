@@ -136,7 +136,7 @@ public class CommunicationPairDataTask {
             	commpairBean.setIpmCenterId(1);
             	commpairBean.setOpenIpLocationFlag(0);
             	commpairBean.setKpis(kpi);
-            	commpairBean.setPropelling(1);
+//            	commpairBean.setPropelling(1);
             	List<CommpairBean> commpairList = commpairService.toCommpairMergeData(commpairBean, 
             			publicProtoPlanService, commpairService, serverManagementService); 
             	Map<String, Object> map = new HashMap<String, Object>();

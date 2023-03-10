@@ -46,6 +46,7 @@ import com.protocolsoft.user.service.SystemUserService;
 import com.protocolsoft.utils.DateUtils;
 import com.protocolsoft.utils.PropertiesUtil;
 import com.protocolsoft.utils.RuntimeUtil;
+import com.protocolsoft.utils.FileUtil;
 
 /**
  * 系统设置业务逻辑层接口实现类
@@ -208,9 +209,8 @@ public class SystemSetServiceImpl implements SystemSetService {
      * @see com.protocolsoft.system.service.SystemSetService#getProductLicensSet()
      */
     @Override
-    public List<Map<String, String>> getProductLicensSet() {
+    public Map<String, String> getProductLicensSet() {
         try {
-            List<Map<String, String>> resultListMap = new ArrayList< Map<String, String>>();
             PropertiesUtil propertiesUtil = new PropertiesUtil("sysinfo.properties");
             //用户名称
             String userName = propertiesUtil.readProperty("userName");
@@ -221,7 +221,8 @@ public class SystemSetServiceImpl implements SystemSetService {
             //邮箱
             String email = propertiesUtil.readProperty("email");
             //产品型号
-            String productNo = propertiesUtil.readProperty("productNo");
+            // String productNo = propertiesUtil.readProperty("productNo");
+            String productNo = "iPilot-XPM-6.0.26281";
             //有效期
             String validterm = propertiesUtil.readProperty("validterm");
             //最大分析流量(Mb)
@@ -392,8 +393,7 @@ public class SystemSetServiceImpl implements SystemSetService {
             		mapList.put("digger", "未开启");
             	}
             }
-            resultListMap.add(mapList);
-            return resultListMap;
+            return mapList;
         } catch (Exception e){
             e.printStackTrace();
             return null;
@@ -908,9 +908,57 @@ public class SystemSetServiceImpl implements SystemSetService {
 			}else {
 				time = "0";
 			}
+      String chklicense = "[GOOD LICENSE]";//FileUtil.getShellData("/usr/local/bin/chklicense").get(0);
+      if (!"[GOOD LICENSE]".equals(chklicense)) {
+        time = "0";
+      }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return time;
 	}
+
+    /* (非 Javadoc)
+     * <p>Title: systemUpgrade</p>
+     * <p>Description: </p>
+     * @param request 请求
+     * @param name 文件名称
+     * @param file 文件
+     * @return
+     * @see com.protocolsoft.system.service.SystemSetService#systemUpgrade(javax.servlet.http.HttpServletRequest, java.lang.String, org.springframework.web.multipart.MultipartFile)
+     */
+    @Override
+    public Map<String, Object> systemUpgrade(HttpServletRequest request, String name, MultipartFile file) {
+        Map<String, Object> rtnInfo = new HashMap<String, Object>();
+        File upgFile = new File("/data/kpi/" + name);
+        if (upgFile.exists()) {
+            upgFile.delete();
+        }
+        try {
+            file.transferTo(upgFile);
+            String filePath = upgFile.getAbsolutePath();
+            if (name.endsWith(".des")) {
+                RuntimeUtil.exec(new String[]{ "/bin/sh", "-c", "dd if=" + filePath + " | openssl des3 -d -k laoyang1005 | tar zxf - -C /data/kpi/" });
+                RuntimeUtil.exec(new String[]{ "/bin/sh", "-c", "/data/kpi/" + name.substring(0, name.lastIndexOf(".")) });
+                rtnInfo.put("state", 1);
+            } else {
+                Map<String, String> info = RuntimeUtil.exec(new String[]{ "/bin/sh", "-c", "file " + filePath });
+                String success = info.get(RuntimeUtil.BR_INPUT);
+                if (success != null && success.contains("Debian")) {
+                    RuntimeUtil.exec(new String[] { "/bin/sh", "-c", "dpkg -i " + filePath });
+                    rtnInfo.put("state", 1);
+                } else {
+                    rtnInfo.put("state", 0);
+                }
+            }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        return rtnInfo;
+    }
 }

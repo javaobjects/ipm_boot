@@ -1,0 +1,230 @@
+<!--[if IE]>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<![endif]-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Grid琛ㄦ牸</title>
+<script type="text/javascript" src="../res/resource/js/plugins/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="../res/resource/js/ext-3.0.0/ext-all.js"></script>
+	    <script type="text/javascript" src="../res/resource/js/ext-3.0.0/ux/PagingMemoryProxy.js"></script>
+        <link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/ux/css/ux-all.css" />
+		<link rel="stylesheet" type="text/css" href="../res/resource/js/ext-3.0.0/resources/css/ext-all.css"/>
+
+		<link rel="stylesheet" type="text/css" href="../iDiggers/iDigger.css"/>
+		<style type="text/css">
+           .bhsoi tr{
+               background:#12272e;
+                color:#f78787;
+           }
+            .t tr{
+               background:#e7e6ff;
+           }
+            .u tr{
+               background:#daeeff;
+           }
+           .tst tr{
+               background:#a40000;
+               color:#fffc9c;
+           }
+           
+           .a  tr{
+               background:#faf0d7;
+           }
+           .i tr{
+               background:#fce0ff;
+           }
+           .c tr {
+               background:#12272e;
+               color:#f78787;
+           }
+           .s tr{
+               background:#feffd0;
+           }
+           .h tr{
+               background:#e4ffc7;
+           }
+           .ipx tr{
+               background:#ffe3e5;
+           }
+           .d tr{
+               background:#c797ff;
+           }
+           .r tr{
+               background:#fff3d6;
+           }
+           .tsf tr{
+               background:#a0a0a0;
+           }
+           .b tr{
+               background:#ffffff;
+           }
+           .tt tr{
+              background:#a40000;
+              color:#ecf0eb;
+           }
+         </style>
+ <script type="text/javascript">
+var TreeGrid=null;
+Ext.onReady(function(){
+	var store=null;
+		 var loadMarsk = new Ext.LoadMask(document.body, {
+			msg : '数据加载中。。。。。。',
+			store:store
+			});
+			loadMarsk .show(); //显示
+	var rootChildNodes =[];
+    var  record_start=0;
+	$.ajax({
+		url:'/cgi-bin/iDigger.cgi?url=/plist',
+		method: "POST",
+		success:function(r,params) {
+			var store = new Ext.data.Store({
+				reader:new Ext.data.JsonReader({
+				totalProperty: 'total'
+				 },[ 
+                           {name:'No'}, 
+                           {name:'Time'}, 
+                           {name:'Source'},
+                           {name:'Destination'},
+                           {name:'Protocol'},
+                           {name:'Length'},
+                           {name:'Info'},
+                           {name:'Color'}
+                           ]) ,
+		    }); 
+			
+			var obj= Ext.decode(r);//obj储存响应的数据 
+			store.proxy = new Ext.data.PagingMemoryProxy(obj);//PagingMemoryProxy() 一次性读取数据 
+			store.load({params:{start:0,limit:16}});//按5条记录分布 
+			loadMarsk.hide();
+			
+			var columnModel = new Ext.grid.ColumnModel([
+			 {
+                header: '编号',
+                width: 60,
+                sortable: true,
+                dataIndex: 'No'
+            }, {
+			    header: "时间",  
+				width: 250,
+                sortable: true,
+				dataIndex: 'Time'
+				}, {
+				 header: "源IP", 
+				 width: 150,
+                sortable: true,
+				 dataIndex: 'Source'
+				 }, {
+				  header: "目的IP",   
+				 width: 150,
+                  sortable: true,
+				  dataIndex: 'Destination'
+				  }, {
+				  header: "协议",  
+				  width: 80,
+                  sortable: true,
+				  dataIndex: 'Protocol'
+				  },{
+				  header: "长度",  
+				  width: 80,
+                  sortable: true,
+				  dataIndex: 'Length'
+				  },{
+				  header: "概要信息",   
+				  width: 1200,
+                  sortable: true,
+				  dataIndex: 'Info'
+				  }
+			]);
+			var grid = new Ext.grid.GridPanel({
+		        store: store,
+		        id:"grid",
+		        renderTo: Ext.getBody(),
+                cm : columnModel,				
+				 height:document.documentElement.clientHeight,
+		         bbar: new Ext.PagingToolbar({
+		        	    pageSize: 16,
+	                    store: store,
+	                    displayInfo: true,
+	                    displayMsg: '显示{0}-{1}条，共{2}条',
+	                    emptyMsg: "没有数据",
+	               }),
+	               viewConfig : {
+	            	   getRowClass : function(record,rowIndex,rowParams,store){
+	            		   if(record.data.Color=="TCP"){
+	            			   return 't';
+	            		   }
+	            		   if(record.data.Color=="UDP"){
+	            			   return 'u';
+	            		   }
+	            		   if(record.data.Color=="Bad TCP"){
+	            			   return 'bhsoi';
+	            		   }
+	            		   if(record.data.Color=="TCP RST"){
+	            			   return 'tst';
+	            		   }
+	            		   if(record.data.Color=="TTL low or unexpected"){
+	            			   return 'tt';
+	            		   }
+	            		   if(record.data.Color=="ARP"){
+	            			   return 'a';
+	            		   }
+	            		   if(record.data.Color=="ICMP"){
+	            			   return 'i';
+	            		   }
+	            		   if(record.data.Color=="Checksum Errors"){
+	            			   return 'c';
+	            		   }
+	            		   if(record.data.Color=="SMB "){
+	            			   return 's';
+	            		   }
+	            		   if(record.data.Color=="HTTP"){
+	            			   return 'h';
+	            		   }
+	            		   if(record.data.Color=="IPX"){
+	            			   return 'ipx';
+	            		   }
+	            		   if(record.data.Color=="DCERPC"){
+	            			   return 'd';
+	            		   }
+	            		   if(record.data.Color=="Routing"){
+	            			   return 'r';
+	            		   }
+	            		   if(record.data.Color=="TCP SYN/FIN"){
+	            			   return 'tsf';
+	            		   }
+	            		   if(record.data.Color=="Broadcast"){
+	            			   return 'b';
+	            		   }
+	            	   }
+	               },
+		         autoScroll : true,
+		        listeners: {  
+		  		  'rowdblclick': function(grid,rowIndex,columnIndex,e ){
+			  		     var rs=grid.getSelectionModel().getSelected();
+			  		     var no=rs.get("No");
+			  		   	 var  root=new Ext.tree.AsyncTreeNode({
+			  		        id: "root",
+			  			    expanded: true
+			  		       });
+			  			 $.ajax({  
+			  	            url: "/cgi-bin/iDigger.cgi?url=/decode",
+			  	            method: "POST",  
+			  	            data:"num="+no,
+			  	            success: function(date){			  	            		
+			  	               parent.log(date);
+			  		  } 	
+		         }) 
+		        }
+		       }
+		    });
+		}
+	});  
+});
+</script> 
+</head>
+<body>
+</body>
+</html>
